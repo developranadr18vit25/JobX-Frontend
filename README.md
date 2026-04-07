@@ -20,4 +20,4 @@ Tech Stack
   
 🔗 Backend Repository
 
-👉 Backend Repo: (add your link here)
+👉 Backend Repo: https://github.com/developranadr18vit25/JOBX-
