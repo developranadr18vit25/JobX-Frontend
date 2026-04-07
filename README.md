@@ -1,18 +1,23 @@
-# React + Vite
+JobX Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JobX is a fullstack modern job portal frontend built using React and Tailwind CSS. It provides a clean, fast, and responsive interface for users to explore job opportunities and interact with job listings.
 
-Currently, two official plugins are available:
+The backend is maintained in a separate repository.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🌐 Features
+ .Search jobs by role, category, or keywords
+ .Job category cards (Remote, MNC, Fresher, etc.)
+ .Job listings UI
+ .Fast and responsive design
+ .Clean UI with Tailwind CSS
+ .API integration with backend
+ 
+Tech Stack
+  Frontend: React.js
+  Styling: Tailwind CSS
+  Routing: React Router
+  API Calls: Axios / Fetch
+  
+🔗 Backend Repository
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+👉 Backend Repo: (add your link here)
