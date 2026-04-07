@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchButton from './SearchButton'
 
 function Navbar() {
     return (
