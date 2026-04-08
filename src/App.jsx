@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import HomeBody from './components/HomeBody';
+import CategoryCard from './components/CategoryCard';
 
 function App() {
   return (
@@ -13,10 +14,9 @@ function App() {
         <Router>
           <Navbar />
           {/* <Body /> */}
-          <HomeBody />
 
           <Routes>
-            {/* <Route path="/" element={} /> */}
+            <Route path="/" element={<HomeBody />} />
           </Routes>
         </Router>
       </div>
