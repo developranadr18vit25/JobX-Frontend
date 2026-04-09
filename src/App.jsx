@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import HomeBody from './components/HomeBody';
 import CategoryCard from './components/CategoryCard';
+import SignUpCard from './components/SignUpCard';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
 
           <Routes>
             <Route path="/" element={<HomeBody />} />
+            <Route path="/registration/createAccount" element={<SignUpCard />} />
+
           </Routes>
         </Router>
       </div>

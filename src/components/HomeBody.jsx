@@ -25,8 +25,6 @@ function HomeBody() {
                 <CategoryCard  text="Startup"/>
                 <CategoryCard  text="Internship"/>
                 
-
-
             </div>
 
 
