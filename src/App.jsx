@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import HomeBody from './components/HomeBody';
 import CategoryCard from './components/CategoryCard';
 import SignUpCard from './components/SignUpCard';
+import UserLoginCard from './components/UserLoginCard';
+
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeBody />} />
             <Route path="/registration/createAccount" element={<SignUpCard />} />
+            <Route path="/login" element={<UserLoginCard/>} />
+
 
           </Routes>
         </Router>
