@@ -24,6 +24,8 @@ function UserLoginCard() {
                         <img src="https://static.vecteezy.com/system/resources/previews/021/919/677/non_2x/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg" alt="Login" className='h-[95%] w-[95%]'  />
 
                     </div>
+
+                    
                 </div>
             </div>
         </>

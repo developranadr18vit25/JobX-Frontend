@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from './SearchBar'
 import CategoryCard from './CategoryCard'
+import CompanyCard from './CompanyCard'
 
 function HomeBody() {
     return (
@@ -16,16 +17,33 @@ function HomeBody() {
             <SearchBar />
 
             <div className=' h-70 w-[85%] mx-auto mt-10 grid grid-cols-2 md:grid-cols-4 gap-6'>
-                <CategoryCard  text="Remote"/>
-                <CategoryCard text="MNC"/>
-                <CategoryCard  text="Marketing"/>
-                <CategoryCard  text="Engineering"/>
-                <CategoryCard  text="Sales"/>
-                <CategoryCard  text="Fresher"/>
-                <CategoryCard  text="Startup"/>
-                <CategoryCard  text="Internship"/>
-                
+                <CategoryCard text="Remote" />
+                <CategoryCard text="MNC" />
+                <CategoryCard text="Marketing" />
+                <CategoryCard text="Engineering" />
+                <CategoryCard text="Sales" />
+                <CategoryCard text="Fresher" />
+                <CategoryCard text="Startup" />
+                <CategoryCard text="Internship" />
+
             </div>
+
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-20 p-6 ml-[3%]'>
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                
+
+
+            </div>
+
+
+
+
 
 
         </>
