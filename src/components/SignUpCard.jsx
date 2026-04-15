@@ -1,12 +1,23 @@
 import React from 'react'
 import SearchButton from './SearchButton'
 import { useState } from 'react'
+import postRegistrationData from '../api/getData';
 
 function SignUpCard() {
 
     const [name , setname]=useState("");
     const [username,setusername]=useState("");
     const [password,setpassword]=useState("");
+    const [purpose, setpurpose]=useState("");
+
+    const handleRegistration=async()=>{
+        await postRegistrationData({
+            Name:name,
+            Username:username,
+            Password:password,
+            Role:purpose
+        })
+    }
 
     return (
         <div className='h-170 w-[70%] bg-white border-2 border-gray-400 rounded-3xl m-auto mt-[3%] flex flex-col'>
@@ -19,16 +30,16 @@ function SignUpCard() {
                 </div>
                 <div className='h-[12%] w-[90%] bg-white flex flex-col '>
                     <h1 className='text-l font-semibold'>Username</h1>
-                    <input type="text" placeholder='Tell us your Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' />
+                    <input type="text" placeholder='Tell us your Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setusername(e.target.value)} />
                 </div>
                 <div className='h-[12%] w-[90%] bg-white flex flex-col '>
                     <h1 className='text-l font-semibold'>Password</h1>
-                    <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' />
+                    <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setpassword(e.target.value)} />
                 </div>
                 <div className='h-[12%] w-[90%] bg-white flex flex-col '>
                     <h1 className='text-l font-semibold'>State your purpose</h1>
                     <label>
-                        <input type="radio" name="q1" value="mumbai" className='mb-[2%] mt-[2%]' /> Applicant
+                        <input type="radio" name="q1" value="mumbai" className='mb-[2%] mt-[2%]'  onChange={(e)=>setpurpose(e.target.value)}/> Applicant
                     </label>
                     <label>
                         <input type="radio" name="q1" value="mumbai" /> Recruiter
@@ -40,7 +51,7 @@ function SignUpCard() {
                     <input type="text" placeholder='What is your name?' className='w-[70%] h-10 mt-[2%]' />
                 </div> */}
                 <div className="mt-6 flex justify-center">
-                    <SearchButton  content="Register Now"/>
+                    <SearchButton content="Register Now" onClick={handleRegistration} />
                 </div>
             </div>
             {/* <SearchButton /> */}
