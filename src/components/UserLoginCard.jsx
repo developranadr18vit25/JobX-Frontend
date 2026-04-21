@@ -1,7 +1,23 @@
 import React from 'react'
 import SearchButton from './SearchButton'
+import loginData from '../api/getData'
+import { useState } from 'react'
 
 function UserLoginCard() {
+
+    const [Username, setUsername]=useState("");
+    const [Password, setPassword]=useState("");
+    
+
+
+    const handleUserLogin=()=>{
+        loginData({
+            Username:Username,
+            Password:Password
+        })
+    }
+
+
     return (
         <>
             <div className='h-130 w-[70%] bg-white border-2 border-gray-400 rounded-3xl m-auto mt-[3%] flex flex-col relative'>
@@ -10,11 +26,11 @@ function UserLoginCard() {
                 <div className='h-100 w-[95%] bg-white ml-[3%] mt-[1%] pt-[3%] pl-[3%] flex flex-col gap-7'>
                     <div className='h-[30%] w-[55%] bg-white flex flex-col'>
                         <h1 className='text-l font-semibold'>Username</h1>
-                        <input type="text" placeholder='Enter your active Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' />
+                        <input type="text" placeholder='Enter your active Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setUsername(e.target.value)} />
                     </div>
                     <div className='h-[30%] w-[55%] bg-white flex flex-col '>
                         <h1 className='text-l font-semibold'>Password</h1>
-                        <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' />
+                        <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setPassword(e.target.value)} />
                     </div>
 
                     <div className="mt-6 ">
