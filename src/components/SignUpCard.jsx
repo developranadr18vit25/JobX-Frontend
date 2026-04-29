@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchButton from './SearchButton'
 import { useState } from 'react'
-import postRegistrationData from '../api/getData';
+import api from '../api/getData';
 
 function SignUpCard() {
 
@@ -11,7 +11,7 @@ function SignUpCard() {
     const [purpose, setpurpose]=useState("");
 
     const handleRegistration=async()=>{
-        await postRegistrationData({
+        await api.postRegistrationData({
             Name:name,
             Username:username,
             Password:password,
@@ -39,10 +39,10 @@ function SignUpCard() {
                 <div className='h-[12%] w-[90%] bg-white flex flex-col '>
                     <h1 className='text-l font-semibold'>State your purpose</h1>
                     <label>
-                        <input type="radio" name="q1" value="mumbai" className='mb-[2%] mt-[2%]'  onChange={(e)=>setpurpose(e.target.value)}/> Applicant
+                        <input type="radio" name="q1" value="Applicant" className='mb-[2%] mt-[2%]'  onChange={(e)=>setpurpose(e.target.value)}/> Applicant
                     </label>
                     <label>
-                        <input type="radio" name="q1" value="mumbai" /> Recruiter
+                        <input type="radio" name="q1" value="Recruiter" onChange={(e)=>setpurpose(e.target.value)} /> Recruiter
                     </label>
                 </div>
 
