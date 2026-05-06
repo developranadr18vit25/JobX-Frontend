@@ -28,6 +28,11 @@ function HomeBody() {
 
             </div>
 
+            <div className='h-18 w-[45%] mb-[1%] ml-[30%] flex flex-row justify-center align-middle pt-4 font-bold font-serif text-2xl'>
+                Top companies hiring now
+
+            </div>
+
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-20 p-6 ml-[3%]'>
                 <CompanyCard companyLink="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_logo.width-500.format-webp.webp" title="Google" />

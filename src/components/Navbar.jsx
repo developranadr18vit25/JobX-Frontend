@@ -24,8 +24,8 @@ function Navbar() {
                             </div>
                             
                         </div>
-                        <button className='bg-white h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl border-2 font-bold ' onClick={()=>navigate("/login")}>Login</button>
-                        <button className='bg-orange-600 h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl font-bold text-white' onClick={()=>navigate("/registration/createAccount")}>Register</button>
+                        <button className='bg-white h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl border-2 font-bold cursor-pointer ' onClick={()=>navigate("/login")}>Login</button>
+                        <button className='bg-orange-600 h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl font-bold text-white cursor-pointer hover:bg-amber-700' onClick={()=>navigate("/registration/createAccount")}>Register</button>
                     </div>
                 </div>
             </nav>

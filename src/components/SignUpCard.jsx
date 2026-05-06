@@ -11,12 +11,13 @@ function SignUpCard() {
     const [purpose, setpurpose]=useState("");
 
     const handleRegistration=async()=>{
-        await api.postRegistrationData({
+        const res=await api.postRegistrationData({
             Name:name,
             Username:username,
             Password:password,
             Role:purpose
-        })
+        });
+        console.log(res.data.msg)
     }
 
     return (

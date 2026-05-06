@@ -1,20 +1,19 @@
 import React from 'react'
 import SearchButton from './SearchButton'
-import loginData from '../api/getData'
+import api from '../api/getData'
 import { useState } from 'react'
 
 function UserLoginCard() {
 
     const [Username, setUsername]=useState("");
     const [Password, setPassword]=useState("");
-    
 
-
-    const handleUserLogin=()=>{
-        loginData({
+    const handleUserLogin=async()=>{
+        const res=await api.loginData({
             Username:Username,
             Password:Password
         })
+        console.log(res.data.AccessToken);
     }
 
 
@@ -33,8 +32,8 @@ function UserLoginCard() {
                         <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setPassword(e.target.value)} />
                     </div>
 
-                    <div className="mt-6 ">
-                        <SearchButton content="Login" />
+                    <div className="mt-6">
+                        <SearchButton content="Login" onClick={handleUserLogin} />
                     </div>
                     <div className='absolute top-20 right-7 h-[75%] w-[35%] bg-white flex items-center justify-center'>
                         <img src="https://static.vecteezy.com/system/resources/previews/021/919/677/non_2x/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg" alt="Login" className='h-[95%] w-[95%]'  />
