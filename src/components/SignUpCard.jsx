@@ -54,7 +54,11 @@ function SignUpCard() {
                 <div className="mt-6 flex justify-center">
                     <SearchButton content="Register Now" onClick={handleRegistration} />
                 </div>
+                <div className='absolute top-[16%] right-[17%] h-[70%] w-[27%] bg-amber-500 flex flex-row justify-center align-middle'>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0CSkXjKl0QEa4QCSXkRd5TByPC-O6LPfIXQ&s" alt="image" />
+                </div>
             </div>
+
             {/* <SearchButton /> */}
 
         </div>

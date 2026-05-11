@@ -2,17 +2,30 @@ import React from 'react'
 import SearchButton from './SearchButton'
 import api from '../api/getData'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function UserLoginCard() {
 
     const [Username, setUsername]=useState("");
     const [Password, setPassword]=useState("");
+    const [loginMsg, setloginMsg]=useState("");
+    const navigate=useNavigate();
 
     const handleUserLogin=async()=>{
         const res=await api.loginData({
             Username:Username,
             Password:Password
         })
+        // setloginMsg(res.data.AccessToken);
+
+        if(res.status===200){
+            localStorage.setItem("token",res.data.AccessToken);
+        }
+
+        // if(res.status=200){
+        //     navigate("/hi")
+        // }
+
         console.log(res.data.AccessToken);
     }
 
@@ -40,7 +53,6 @@ function UserLoginCard() {
 
                     </div>
 
-                    
                 </div>
             </div>
         </>

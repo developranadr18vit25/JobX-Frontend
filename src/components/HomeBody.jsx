@@ -17,14 +17,14 @@ function HomeBody() {
             <SearchBar />
 
             <div className=' h-70 w-[85%] mx-auto mt-10 grid grid-cols-2 md:grid-cols-4 gap-6'>
-                <CategoryCard text="Remote" />
-                <CategoryCard text="MNC" />
-                <CategoryCard text="Marketing" />
-                <CategoryCard text="Engineering" />
-                <CategoryCard text="Sales" />
-                <CategoryCard text="Fresher" />
-                <CategoryCard text="Startup" />
-                <CategoryCard text="Internship" />
+                <CategoryCard text="Remote" type="/jobs/Remote" />
+                <CategoryCard text="MNC" type="/jobs/MNC"/>
+                <CategoryCard text="Marketing" type="/jobs/Marketing" />
+                <CategoryCard text="Engineering" type="/jobs/Engineering" />
+                <CategoryCard text="Sales" type="/jobs/Sales" />
+                <CategoryCard text="Fresher" type="/jobs/Fresher" />
+                <CategoryCard text="Startup" type="/jobs/Startup" />
+                <CategoryCard text="Internship" type="/jobs/Internship" />
 
             </div>
 

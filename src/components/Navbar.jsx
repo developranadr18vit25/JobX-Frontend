@@ -17,9 +17,9 @@ function Navbar() {
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">
                                     <Link to="/" aria-current="page" className="rounded-md  px-3 py-2 text-m font-medium text-black hover:cursor-pointer">Home</Link>
-                                    <a href="#" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Jobs</a>
-                                    <a href="#" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">About</a>
-                                    <a href="#" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Contact</a>
+                                    <Link to="/jobs" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Jobs</Link>
+                                    <Link to="/about" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">About</Link>
+                                    <Link to="/contact" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Contact</Link>
                                 </div>
                             </div>
                             
