@@ -1,8 +1,22 @@
 import React from 'react'
 import JobCard from './JobCard'
 import api from '../api/getData'
+import { useState } from 'react'
+
 
 function DisplayBody() {
+
+  const [Jobs, setJobs] = useState("");
+
+  const getAllJobs = async () => {
+
+    const res = await api.getAvailableJobs();
+
+    console.log(res.data.Jobs);
+
+    setJobs(res.data.Jobs);
+  }
+
   return (
     <>
 
@@ -96,19 +110,29 @@ function DisplayBody() {
         </div>
       </aside>
 
-      <div className='w-[70%] min-h-screen bg-white ml-[28%] mt-[3%] pl-[3%] pt-[2%]'>
+
+
+      <button onClick={getAllJobs}> click me</button>
+
+      <div className='w-[70%] min-h-screen bg-white ml-[28%] mt-[3%] pl-[3%] pt-[2%]'
+      >
+
+
+        {/* <JobCard />
         <JobCard />
         <JobCard />
         <JobCard />
         <JobCard />
-        <JobCard />
-        <JobCard />
-        <button onClick={api.getAvailableJobs}> click me</button>
+        <JobCard /> */}
+
+
       </div>
 
     </>
 
   )
+
 }
+
 
 export default DisplayBody

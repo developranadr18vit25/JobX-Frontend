@@ -35,7 +35,9 @@ const getAvailableJobs = async () => {
 
             }
         )
-        console.log(res.data.Jobs)
+
+        return res;
+        // console.log(res.data.Jobs)
 
     } catch (error) {
         console.log(error)
