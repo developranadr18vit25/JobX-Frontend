@@ -1,33 +1,32 @@
 import React from 'react'
 import JobCard from './JobCard'
 import api from '../api/getData'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function DisplayBody() {
 
-  const [Jobs, setJobs] = useState("");
+  const [Jobs, setJobs] = useState([]);
 
-  const getAllJobs = async () => {
+  useEffect(() => {
 
-    const res = await api.getAvailableJobs();
+    const fetchAvailableJobs = async () => {
 
-    console.log(res.data.Jobs);
+      const res = await api.getAvailableJobs();
 
-    setJobs(res.data.Jobs);
-  }
+      console.log(res.data.Jobs);
+
+      setJobs(res.data.Jobs);
+    }
+
+    fetchAvailableJobs();
+
+  }, [])
 
   return (
     <>
-
-      <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" className="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
-        <span className="sr-only">Open sidebar</span>
-        <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10" />
-        </svg>
-      </button>
-
       <aside id="separator-sidebar" className="fixed top-[10%] left-[2%] z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <h1 className='text-3xl'>All filters</h1>
         <div className="h-full px-3 py-4 overflow-y-auto bg-neutral-primary-soft border-e border-default">
           <ul className="space-y-2 font-medium">
             <li>
@@ -111,21 +110,10 @@ function DisplayBody() {
       </aside>
 
 
-
-      <button onClick={getAllJobs}> click me</button>
-
-      <div className='w-[70%] min-h-screen bg-white ml-[28%] mt-[3%] pl-[3%] pt-[2%]'
-      >
-
-
-        {/* <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard /> */}
-
-
+      <div className='w-[70%] min-h-screen bg-slate-100 ml-[28%] mt-[3%] pl-[3%] pt-[2%]'>
+        {Jobs.map(job => {
+          return <JobCard Role={job.Title} CompanyName={job.Company} Location={job.Location} JobType={job.JobType} Experience={job.Experience} />
+        })}
       </div>
 
     </>
