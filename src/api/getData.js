@@ -17,7 +17,6 @@ const loginData = async (data) => {
 
     } catch (error) {
         console.log(error);
-
     }
 }
 
@@ -37,7 +36,6 @@ const getAvailableJobs = async () => {
         )
 
         return res;
-        // console.log(res.data.Jobs)
 
     } catch (error) {
         console.log(error)
