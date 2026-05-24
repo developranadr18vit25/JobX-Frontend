@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+
+
 
 function LeftSideBar() {
+    const location=useLocation();
     return (
         <>
             <aside id="separator-sidebar" className="fixed top-[10%] left-[2%] z-40 w-64 h-[90vh] overflow-y-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
@@ -64,23 +68,91 @@ function LeftSideBar() {
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z" /></svg>
-                                <span className="flex-1 ms-3 whitespace-nowrap">Experience</span>
-                            </Link>
+                        <li className="group relative">
+                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
+                                Experience
+                            </div>
+
+                            <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
+                                <li>
+                                    <Link to="/jobs?minExp=0&maxExp=2" className="hover:text-fg-brand" >
+                                        0-2 yrs
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/jobs?minExp=2&maxExp=4" className="hover:text-fg-brand" >
+                                        2-4 yrs
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/jobs?minExp=4" className="hover:text-fg-brand" >
+                                        4+ yrs
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" /></svg>
-                                <span className="flex-1 ms-3 whitespace-nowrap">Salary</span>
-                            </Link>
+                        <li className="group relative">
+                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
+                                Salary
+                            </div>
+
+                            <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
+                                <li>
+                                    <Link to="/jobs?minSalary=0&maxSalary=300000" className="hover:text-fg-brand" >
+                                        0-3 LPA
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/jobs?minSalary=300000&maxSalary=600000" className="hover:text-fg-brand" >
+                                        3-6 LPA
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to="/jobs?minSalary=600000&maxSalary=1000000" className="hover:text-fg-brand" >
+                                        6-10 LPA
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/jobs?minSalary=1000000" className="hover:text-fg-brand" >
+                                        10+ LPA
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" /></svg>
-                                <span className="flex-1 ms-3 whitespace-nowrap">Location</span>
-                            </Link>
+                        <li className="px-2 py-2">
+                            <div className="text-body font-medium mb-1">
+                                Location
+                            </div>
+
+                            <input
+                                type="text"
+                                placeholder="Enter location (e.g. Gurgaon, Remote)"
+                                className="w-full px-2 py-1 border rounded text-sm"
+                                onChange={(e) => {
+                                    const value = e.target.value;
+
+                                    const params= new URLSearchParams(location.search);
+
+                                    if(value){
+                                        params.set("location",value);
+                                    }
+                                    else{
+                                        params.delete("location")
+                                    }
+
+                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                    window.history.replaceState(
+                                        {},
+                                        "",
+                                        newUrl
+                                    )
+                                }}
+                            />
                         </li>
                         <li>
                             <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">

@@ -20,10 +20,10 @@ const loginData = async (data) => {
     }
 }
 
-const getAvailableJobs = async () => {
+const getAvailableJobs = async (params) => {
     try {
         const token = localStorage.getItem("token")
-        const res = await axios.post("http://127.0.0.1:4000/display/jobs",
+        const res = await axios.post(`http://127.0.0.1:4000/display/jobs${params}`,
             {
                 Mode: "available"
             },
@@ -44,32 +44,59 @@ const getAvailableJobs = async () => {
 
 }
 
-const filterRemote=async(jobType)=>{
-    try {
+// const filterRemote = async (jobType) => {
+//     try {
 
-        const token=localStorage.getItem("token");
+//         const token = localStorage.getItem("token");
 
-        const res=await axios.post(`http://127.0.0.1:4000/display/jobs?JobType=${jobType}` , 
-            {
-                Mode:"available"
-            },
-            {
-                headers:{
-                    Authorization: `Bearer ${token}`
-                }
-            }
-        );
-        return res;
+//         const res = await axios.post(`http://127.0.0.1:4000/display/jobs?JobType=${jobType}`,
+//             {
+//                 Mode: "available"
+//             },
+//             {
+//                 headers: {
+//                     Authorization: `Bearer ${token}`
+//                 }
+//             }
+//         );
+//         return res;
 
-    } catch (error) {
-        console.log(error);
-        
-    }
-}
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+// }
+
+// const filterExperience = async (minExp, maxExp) => {
+//     try {
+
+//         const token = localStorage.getItem("token");
+//         let url=`http://127.0.0.1:4000/display/jobs?minExp=${minExp}`;
+
+//         if(maxExp){
+//             url+=`&maxExp=${maxExp}`;
+//         }
+
+//         const res = await axios.post(,
+//             {
+//                 Mode: "available"
+//             },
+//             {
+//                 headers: {
+//                     Authorization: `Bearer ${token}`
+//                 }
+//             }
+//         );
+
+//         return res;
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 export default {
     postRegistrationData,
     loginData,
-    getAvailableJobs,
-    filterRemote
+    getAvailableJobs
 };

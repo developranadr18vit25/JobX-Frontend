@@ -19,15 +19,7 @@ function DisplayBody() {
 
       const params= new URLSearchParams(location.search);
 
-      const jobType=params.get("JobType");
-      let res;
-
-      if(jobType){
-        res=await api.filterRemote(jobType);
-      }
-      else{
-        res=await api.getAvailableJobs();
-      }
+      const res=await api.getAvailableJobs("?"+params.toString());
 
       console.log(res.data.Jobs);
 
