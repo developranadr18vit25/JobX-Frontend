@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function LeftSideBar() {
-    const location=useLocation();
+    const location = useLocation();
+    const navigate = useNavigate();
     return (
         <>
             <aside id="separator-sidebar" className="fixed top-[10%] left-[2%] z-40 w-64 h-[90vh] overflow-y-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
@@ -50,21 +52,99 @@ function LeftSideBar() {
 
                             <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
                                 <li>
-                                    <Link to="/jobs?JobType=Remote" className="hover:text-fg-brand" >
-                                        Remote
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="jobType"
+                                            value="Remote"
+                                            checked={new URLSearchParams(location.search).get("JobType") === "Remote"}
+                                            onChange={(e) => {
+
+                                                const value = e.target.value;
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                if (value) {
+                                                    params.set("JobType", value);
+                                                }
+                                                else {
+                                                    params.delete("JobType");
+                                                }
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>Remote</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?JobType=Hybrid" className="hover:text-fg-brand" >
-                                        Hybrid
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="jobType"
+                                            value="Hybrid"
+                                            checked={new URLSearchParams(location.search).get("JobType") === "Hybrid"}
+                                            onChange={(e) => {
+
+                                                const value = e.target.value;
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                if (value) {
+                                                    params.set("JobType", value);
+                                                }
+                                                else {
+                                                    params.delete("JobType");
+                                                }
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>Hybrid</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?JobType=OnSite" className="hover:text-fg-brand" >
-                                        OnSite
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="jobType"
+                                            value="OnSite"
+                                            checked={new URLSearchParams(location.search).get("JobType") === "OnSite"}
+                                            onChange={(e) => {
+
+                                                const value = e.target.value;
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                if (value) {
+                                                    params.set("JobType", value);
+                                                }
+                                                else {
+                                                    params.delete("JobType");
+                                                }
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>OnSite</span>
+                                    </label>
                                 </li>
                             </ul>
                         </li>
@@ -75,21 +155,82 @@ function LeftSideBar() {
 
                             <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
                                 <li>
-                                    <Link to="/jobs?minExp=0&maxExp=2" className="hover:text-fg-brand" >
-                                        0-2 yrs
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Experience"
+                                            value="0-2"
+                                            checked={new URLSearchParams(location.search).get("minExp") === "0"}
+                                            onChange={(e) => {
+
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minExp", 0);
+                                                params.set("maxExp", 2);
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>0-2 yrs</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?minExp=2&maxExp=4" className="hover:text-fg-brand" >
-                                        2-4 yrs
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Experience"
+                                            value="2-4"
+                                            checked={new URLSearchParams(location.search).get("minExp") === "2"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minExp", 2);
+                                                params.set("maxExp", 4);
+
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>2-4 yrs</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?minExp=4" className="hover:text-fg-brand" >
-                                        4+ yrs
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Experience"
+                                            value="4+"
+                                            checked={new URLSearchParams(location.search).get("minExp") === "4"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minExp", 4);
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>4+ yrs</span>
+                                    </label>
                                 </li>
                             </ul>
                         </li>
@@ -100,26 +241,106 @@ function LeftSideBar() {
 
                             <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
                                 <li>
-                                    <Link to="/jobs?minSalary=0&maxSalary=300000" className="hover:text-fg-brand" >
-                                        0-3 LPA
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Salary"
+                                            value="0-3"
+                                            checked={new URLSearchParams(location.search).get("minSalary") === "0"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minSalary", 0);
+                                                params.set("maxSalary", 300000);
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>0-3 LPA</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?minSalary=300000&maxSalary=600000" className="hover:text-fg-brand" >
-                                        3-6 LPA
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Salary"
+                                            value="3-6"
+                                            checked={new URLSearchParams(location.search).get("minSalary") === "300000"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minSalary", 300000);
+                                                params.set("maxSalary", 600000);
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>3-6 LPA</span>
+                                    </label>
                                 </li>
 
                                 <li>
-                                    <Link to="/jobs?minSalary=600000&maxSalary=1000000" className="hover:text-fg-brand" >
-                                        6-10 LPA
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Salary"
+                                            value="6-10"
+                                            checked={new URLSearchParams(location.search).get("minSalary") === "600000"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minSalary", 600000);
+                                                params.set("maxSalary", 1000000);
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>6-10 LPA</span>
+                                    </label>
                                 </li>
                                 <li>
-                                    <Link to="/jobs?minSalary=1000000" className="hover:text-fg-brand" >
-                                        10+ LPA
-                                    </Link>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            name="Salary"
+                                            value="10+"
+                                            checked={new URLSearchParams(location.search).get("minSalary") === "1000000"}
+                                            onChange={(e) => {
+
+                                                const params = new URLSearchParams(location.search);
+
+                                                params.set("minSalary", 1000000);
+                                                params.delete("maxSalary");
+
+                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+                                                navigate(newUrl);
+
+                                            }}
+                                        />
+
+                                        <span>10+ LPA</span>
+                                    </label>
                                 </li>
                             </ul>
                         </li>
@@ -135,30 +356,65 @@ function LeftSideBar() {
                                 onChange={(e) => {
                                     const value = e.target.value;
 
-                                    const params= new URLSearchParams(location.search);
+                                    const params = new URLSearchParams(location.search);
 
-                                    if(value){
-                                        params.set("location",value);
+                                    if (value) {
+                                        params.set("location", value);
                                     }
-                                    else{
+                                    else {
                                         params.delete("location")
                                     }
 
-                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+                                    const newUrl = `${window.location.pathname}?${params.toString()}`;
 
-                                    window.history.replaceState(
-                                        {},
-                                        "",
-                                        newUrl
-                                    )
+                                    navigate(newUrl)
                                 }}
                             />
                         </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" /></svg>
-                                <span className="flex-1 ms-3 whitespace-nowrap">Skills</span>
-                            </Link>
+
+                        <li className="group relative">
+                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
+                                Popular Skills
+                            </div>
+
+                            <ul className="hidden group-hover:block pl-10 text-sm space-y-2">
+
+                                <li>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" />
+                                        <span>React</span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" />
+                                        <span>Node</span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" />
+                                        <span>JavaScript</span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" />
+                                        <span>Tailwind</span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" />
+                                        <span>Angular</span>
+                                    </label>
+                                </li>
+
+                            </ul>
                         </li>
                     </ul>
 
