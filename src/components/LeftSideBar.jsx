@@ -381,35 +381,119 @@ function LeftSideBar() {
 
                                 <li>
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" 
+                                                onChange={(e)=>{
+                                                    const params=new URLSearchParams(location.search);
+
+                                                    if(e.target.checked){
+                                                        params.append("skills","React");
+                                                    }
+                                                    else{
+                                                        params.delete("skills","React")
+                                                    }
+
+                                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                                    navigate(newUrl);
+                                                }} 
+                                                
+                                        />
                                         <span>React</span>
                                     </label>
                                 </li>
 
                                 <li>
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" />
-                                        <span>Node</span>
+                                        <input type="checkbox" 
+                                                onChange={(e)=>{
+                                                    const params=new URLSearchParams(location.search);
+
+
+                                                    if(e.target.checked){
+                                                        params.append("skills","NodeJs");
+                                                    }
+                                                    else{
+                                                        params.delete("skills","NodeJs")
+                                                    }
+
+                                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                                    navigate(newUrl);
+                                                }} 
+                                                
+                                        />
+                                        <span>Node JS</span>
                                     </label>
                                 </li>
 
                                 <li>
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" 
+                                                onChange={(e)=>{
+                                                    const params=new URLSearchParams(location.search);
+
+
+                                                    if(e.target.checked){
+                                                        params.append("skills","JavaScript");
+                                                    }
+                                                    else{
+                                                        params.delete("skills","JavaScript")
+                                                    }
+
+                                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                                    navigate(newUrl);
+                                                }} 
+                                                
+                                        />
                                         <span>JavaScript</span>
                                     </label>
                                 </li>
 
                                 <li>
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" 
+                                                onChange={(e)=>{
+                                                    const params=new URLSearchParams(location.search);
+
+
+                                                    if(e.target.checked){
+                                                        params.append("skills","Tailwind");
+                                                    }
+                                                    else{
+                                                        params.delete("skills","Tailwind")
+                                                    }
+
+                                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                                    navigate(newUrl);
+                                                }} 
+                                                
+                                        />
                                         <span>Tailwind</span>
                                     </label>
                                 </li>
 
                                 <li>
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" 
+                                                onChange={(e)=>{
+                                                    const params=new URLSearchParams(location.search);
+
+
+                                                    if(e.target.checked){
+                                                        params.append("skills","Angular");
+                                                    }
+                                                    else{
+                                                        params.delete("skills","Angular")
+                                                    }
+
+                                                    const newUrl=`${window.location.pathname}?${params.toString()}`;
+
+                                                    navigate(newUrl);
+                                                }} 
+                                                
+                                        />
                                         <span>Angular</span>
                                     </label>
                                 </li>

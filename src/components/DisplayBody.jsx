@@ -37,7 +37,7 @@ function DisplayBody() {
 
       <div className='w-[70%] min-h-screen bg-slate-100 ml-[28%] mt-[3%] pl-[3%] pt-[2%]'>
         {Jobs.map(job => {
-          return <JobCard Role={job.Title} CompanyName={job.Company} Location={job.Location} JobType={job.JobType} Experience={job.Experience} />
+          return <JobCard Role={job.Title} CompanyName={job.Company} Location={job.Location} JobType={job.JobType} Experience={job.Experience} JobId={job.JobId} />
         })}
       </div>
 
