@@ -7,6 +7,7 @@ import SignUpCard from './components/SignUpCard';
 import UserLoginCard from './components/UserLoginCard';
 import DisplayBody from './components/DisplayBody';
 import JobDetail from './components/JobDetail';
+import JobApplication from './components/JobApplication';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<UserLoginCard/>} />
             <Route path="/jobs" element={<DisplayBody />} />
             <Route path="/jobs/:JobId" element={<JobDetail />} />
+            <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
 
 
 

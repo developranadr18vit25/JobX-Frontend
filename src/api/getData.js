@@ -44,59 +44,35 @@ const getAvailableJobs = async (params) => {
 
 }
 
-// const filterRemote = async (jobType) => {
-//     try {
+const postUserApplication = async (JobId,Resume, Msg) => {
+    try {
 
-//         const token = localStorage.getItem("token");
+        const token=localStorage.getItem("token");
 
-//         const res = await axios.post(`http://127.0.0.1:4000/display/jobs?JobType=${jobType}`,
-//             {
-//                 Mode: "available"
-//             },
-//             {
-//                 headers: {
-//                     Authorization: `Bearer ${token}`
-//                 }
-//             }
-//         );
-//         return res;
+        const res = await axios.post("http://127.0.0.1:4000/apply/newJob",
+            {
+                JobId:JobId,
+                ResumeLink: Resume,
+                Message: Msg
+            },
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
 
-//     } catch (error) {
-//         console.log(error);
+        return res;
 
-//     }
-// }
+    } catch (error) {
+        console.log(error);
+    }
 
-// const filterExperience = async (minExp, maxExp) => {
-//     try {
-
-//         const token = localStorage.getItem("token");
-//         let url=`http://127.0.0.1:4000/display/jobs?minExp=${minExp}`;
-
-//         if(maxExp){
-//             url+=`&maxExp=${maxExp}`;
-//         }
-
-//         const res = await axios.post(,
-//             {
-//                 Mode: "available"
-//             },
-//             {
-//                 headers: {
-//                     Authorization: `Bearer ${token}`
-//                 }
-//             }
-//         );
-
-//         return res;
-
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+}
 
 export default {
     postRegistrationData,
     loginData,
-    getAvailableJobs
+    getAvailableJobs,
+    postUserApplication
 };
