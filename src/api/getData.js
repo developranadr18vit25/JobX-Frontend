@@ -44,19 +44,20 @@ const getAvailableJobs = async (params) => {
 
 }
 
-const postUserApplication = async (JobId,Resume, Msg) => {
+const postUserApplication = async (JobId, Resume, Msg , Email) => {
     try {
 
-        const token=localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
         const res = await axios.post("http://127.0.0.1:4000/apply/newJob",
             {
-                JobId:JobId,
+                JobId: JobId,
+                Email:Email,
                 ResumeLink: Resume,
                 Message: Msg
             },
             {
-                headers:{
+                headers: {
                     Authorization: `Bearer ${token}`
                 }
             }
@@ -65,14 +66,33 @@ const postUserApplication = async (JobId,Resume, Msg) => {
         return res;
 
     } catch (error) {
-        console.log(error);
+        console.log(error.status);
     }
+}
 
+const jobAlreadyApplied = async (JobId) => {
+
+    const token = localStorage.getItem("token");
+
+    const res = await axios.post("http://127.0.0.1:4000/apply/newJob/check",
+        {
+            JobId: JobId
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+
+        }
+    )
+
+    return res;
 }
 
 export default {
     postRegistrationData,
     loginData,
     getAvailableJobs,
-    postUserApplication
+    postUserApplication,
+    jobAlreadyApplied
 };
