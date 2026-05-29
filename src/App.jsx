@@ -8,6 +8,7 @@ import UserLoginCard from './components/UserLoginCard';
 import DisplayBody from './components/DisplayBody';
 import JobDetail from './components/JobDetail';
 import JobApplication from './components/JobApplication';
+import AppliedJobs from './components/AppliedJobs';
 
 
 function App() {
@@ -28,8 +29,7 @@ function App() {
             <Route path="/jobs" element={<DisplayBody />} />
             <Route path="/jobs/:JobId" element={<JobDetail />} />
             <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
-
-
+            <Route path="/jobs/applied" element={<AppliedJobs />} />
 
           </Routes>
         </Router>
