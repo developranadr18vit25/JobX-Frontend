@@ -7,7 +7,7 @@ function JobCard({Role, CompanyName, Location , JobType , Experience , JobId}) {
     const navigate=useNavigate();
     return (
 
-        <div className=" bg-white bg-neutral-primary-soft block w-[70%] h-[35%] mt-[3%] p-6 border-2  rounded-4xl rounded-base shadow-xs">
+        <div className=" bg-white bg-neutral-primary-soft block mt-[3%] p-6 border-2  rounded-4xl rounded-base shadow-xs">
             <h5 className="mb-1 text-2xl font-semibold tracking-tight text-heading leading-8">{Role}</h5>
             <p className="text-body mb-2">{CompanyName}</p>
             <p className="text-body mb-2">Location: {Location}</p>

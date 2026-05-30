@@ -89,10 +89,28 @@ const jobAlreadyApplied = async (JobId) => {
     return res;
 }
 
+
+const displayAppliedJobs=async()=>{
+
+    const token=localStorage.getItem("token");
+
+    const res=await axios.get("http://127.0.0.1:4000/display/jobs/applied" , 
+        {
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
+    )
+
+    return res;
+
+}
+
 export default {
     postRegistrationData,
     loginData,
     getAvailableJobs,
     postUserApplication,
-    jobAlreadyApplied
+    jobAlreadyApplied,
+    displayAppliedJobs
 };
