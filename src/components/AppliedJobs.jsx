@@ -1,6 +1,7 @@
 import React, { useEffect ,useState} from 'react'
 import api from "../api/getData"
 import JobCard from './JobCard'
+import AppliedJobCard from './AppliedJobCard';
 
 function AppliedJobs() {
 
@@ -8,6 +9,7 @@ function AppliedJobs() {
     const [Pending,setPending]=useState(0);
     const [Shortlisted,setShortlisted]=useState(0);
     const [Rejected,setRejected]=useState(0);
+    const [Jobs,setJobs]=useState([]);
 
     useEffect(() => {
 
@@ -45,24 +47,18 @@ function AppliedJobs() {
                 </div>
             </div>
 
-            <div className='min-h-screen w-[77%] bg-amber-400 ml-[10%] text-center text-3xl'>
+            <div className='h-100 w-[77%] bg-amber-400 ml-[10%] text-center text-3xl'>
                 <h1>Applied Jobs</h1>
 
-                <div className='h-20 w-full mt-[2%] bg-green-400 flex flex-row justify-center align-middle'>
+                {/* <div className='h-20 w-full mt-[2%] bg-green-400 flex flex-row justify-center align-middle'>
                     <div className='h-20 w-[20%] bg-red-300 '></div>
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
 
-                </div>
+                </div> */}
 
-                <div className='grid grid-cols-3 gap-4 mt-6 px-4'>
-                    <JobCard />
-                    <JobCard />
-                    <JobCard />
-                    
-
-                </div>
+                <AppliedJobCard />
             </div>
         </>
 
