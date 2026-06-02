@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AppliedJobCard() {
+function AppliedJobCard({title,company,date,status,jobType,location}) {
 
   
   return (
@@ -9,18 +9,18 @@ function AppliedJobCard() {
       <div className="flex justify-between items-start">
 
         <div>
-          <h2 className="text-lg font-semibold">Frontend Developer</h2>
-          <p className="text-gray-500 text-sm">Google • Bengaluru</p>
+          <h2 className="text-lg font-semibold">{title}</h2>
+          <p className="text-gray-500 text-sm">{company} • {location}</p>
         </div>
 
         <span className=" px-3 py-1 text-xs rounded-full bg-yellow-100 text-yellow-700">
-          Under Review
+          {status}
         </span>
 
       </div>
 
       <div className="mt-3 text-sm text-gray-600">
-        Applied on: 12 May 2026
+        Applied on: {date}
       </div>
 
       <div className="mt-4 flex gap-3">

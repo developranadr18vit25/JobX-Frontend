@@ -23,7 +23,9 @@ function AppliedJobs() {
             setPending(res.data.Pending);
             setShortlisted(res.data.Shortlisted);
             setRejected(res.data.Rejected);
+            setJobs(res.data.AppliedJobs);
         }
+        
 
         fetchAppliedJobs();
 
@@ -55,14 +57,14 @@ function AppliedJobs() {
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
                     <div className='h-20 w-[20%] bg-red-300 ml-[5%]'></div>
-
                 </div> */}
 
-                <AppliedJobCard />
+                {Jobs.map((job)=>{
+                    return <AppliedJobCard title={job.Title} company={job.Company} location={job.Location} jobType={job.JobType} status={job.Status} date={new Date(job.AppliedOn).toISOString().split("T")[0]} />
+                })}
+
             </div>
         </>
-
-
     )
 }
 
