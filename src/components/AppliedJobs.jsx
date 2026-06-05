@@ -49,7 +49,7 @@ function AppliedJobs() {
                 </div>
             </div>
 
-            <div className='h-100 w-[77%] bg-amber-400 ml-[10%] text-center text-3xl'>
+            <div className='w-[77%]  ml-[10%] text-center text-3xl'>
                 <h1>Applied Jobs</h1>
 
                 {/* <div className='h-20 w-full mt-[2%] bg-green-400 flex flex-row justify-center align-middle'>
@@ -60,7 +60,7 @@ function AppliedJobs() {
                 </div> */}
 
                 {Jobs.map((job)=>{
-                    return <AppliedJobCard title={job.Title} company={job.Company} location={job.Location} jobType={job.JobType} status={job.Status} date={new Date(job.AppliedOn).toISOString().split("T")[0]} />
+                    return <AppliedJobCard title={job.Title} company={job.Company} location={job.Location} jobType={job.JobType} status={job.Status} date={new Date(job.AppliedOn).toISOString().split("T")[0]} jobid={job.JobId} />
                 })}
 
             </div>

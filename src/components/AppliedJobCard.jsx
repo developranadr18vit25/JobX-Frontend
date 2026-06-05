@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function AppliedJobCard({title,company,date,status,jobType,location}) {
+function AppliedJobCard({title,company,date,status,jobType,location,jobid}) {
+
+  const navigate=useNavigate();
 
   
   return (
-    <div className="w-[60%] bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition ml-[20%]">
+    <div className="w-[60%] bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition ml-[20%] mt-[3%]">
 
       <div className="flex justify-between items-start">
 
@@ -25,7 +28,9 @@ function AppliedJobCard({title,company,date,status,jobType,location}) {
 
       <div className="mt-4 flex gap-3">
 
-        <button className="px-10 py-2 text-sm border rounded-lg hover:bg-gray-100">
+        <button className="px-10 py-2 text-sm border rounded-lg hover:bg-gray-100" onClick={()=>{
+          navigate(`/jobs/${jobid}`)
+        }}>
           View Job
         </button>
 

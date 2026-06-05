@@ -9,6 +9,7 @@ import DisplayBody from './components/DisplayBody';
 import JobDetail from './components/JobDetail';
 import JobApplication from './components/JobApplication';
 import AppliedJobs from './components/AppliedJobs';
+import RecruiterLoginCard from './components/RecruiterLoginCard';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
             <Route path="/jobs/:JobId" element={<JobDetail />} />
             <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
             <Route path="/jobs/applied" element={<AppliedJobs />} />
+            <Route path="/login/recruit" element={<UserLoginCard />} />
+            <Route path="/registration/createAccount/recruit" element={<SignUpCard />} />
+
 
           </Routes>
         </Router>

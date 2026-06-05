@@ -68,7 +68,7 @@ function JobDetail() {
                         <p className="text-body mb-2">Salary: {Job.Salary}</p>
 
                         {
-                            IsApplied ? <p className='text-xl text-red-600'>Job already applied</p> : <button
+                            IsApplied ? <p className='text-xl text-red-600'>Job already applied</p>: <button
                                 className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition hover:cursor-pointer  " onClick={() => {
                                     navigate("Application")
                                 }}
