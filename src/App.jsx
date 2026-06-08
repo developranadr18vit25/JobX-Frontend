@@ -10,9 +10,13 @@ import JobDetail from './components/JobDetail';
 import JobApplication from './components/JobApplication';
 import AppliedJobs from './components/AppliedJobs';
 import RecruiterLoginCard from './components/RecruiterLoginCard';
+import { useState } from 'react';
 
 
 function App() {
+
+  const [user,setuser]=useState(JSON.parse(localStorage.getItem("user")));
+
   return (
     <>
       <div className="relative min-h-screen">
@@ -20,18 +24,18 @@ function App() {
         <div className="fixed inset-0 bg-slate-100 -z-10 min-h-screen"></div>
 
         <Router>
-          <Navbar />
+          <Navbar user={user} setuser={setuser}/>
           {/* <Body /> */}
 
           <Routes>
             <Route path="/" element={<HomeBody />} />
             <Route path="/registration/createAccount" element={<SignUpCard />} />
-            <Route path="/login" element={<UserLoginCard/>} />
+            <Route path="/login" element={<UserLoginCard setuser={setuser} />} />
             <Route path="/jobs" element={<DisplayBody />} />
             <Route path="/jobs/:JobId" element={<JobDetail />} />
             <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
             <Route path="/jobs/applied" element={<AppliedJobs />} />
-            <Route path="/login/recruit" element={<UserLoginCard />} />
+            <Route path="/login/recruit" element={<UserLoginCard/>} />
             <Route path="/registration/createAccount/recruit" element={<SignUpCard />} />
 
 

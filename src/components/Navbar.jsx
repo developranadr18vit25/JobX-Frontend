@@ -2,11 +2,12 @@ import React from 'react'
 import SearchButton from './SearchButton'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-function Navbar() {
+function Navbar({user,setuser}) {
     const navigate = useNavigate();
-
-    const user = JSON.parse(localStorage.getItem("user"))
 
     return (
         <>
@@ -60,12 +61,17 @@ function Navbar() {
                                 </>
                             )
                             :
+                            <>
                             <div>
                                 {user.Username}
                             </div>
+
+                            <div>
+                                <LogoutButton setuser={setuser} />
+                            </div>
+                            </>
+
                         }
-
-
 
                     </div>
                 </div>

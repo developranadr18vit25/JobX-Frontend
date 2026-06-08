@@ -4,7 +4,7 @@ import api from '../api/getData'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UserLoginCard() {
+function UserLoginCard({setuser}) {
 
     const [Username, setUsername]=useState("");
     const [Password, setPassword]=useState("");
@@ -19,8 +19,11 @@ function UserLoginCard() {
         // setloginMsg(res.data.AccessToken);
 
         if(res.status===200){
+            localStorage.setItem("user" , JSON.stringify(res.data.user));
             localStorage.setItem("token",res.data.AccessToken);
-            localStorage.setItem("user" , JSON.stringify(res.data.user))
+
+            setuser(res.data.user);
+            
         }
 
         // if(res.status=200){
@@ -28,6 +31,7 @@ function UserLoginCard() {
         // }
 
         console.log(res.data.AccessToken);
+        console.log(res.data.user);
     }
 
 
