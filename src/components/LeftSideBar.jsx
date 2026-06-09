@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { filterJobType } from '../hooks/sideBarFilters';
+import { filterExperience } from '../hooks/sideBarFilters';
+import { filterSalary } from '../hooks/sideBarFilters';
+import { filterSkills } from '../hooks/sideBarFilters';
 
 
 
@@ -37,7 +41,7 @@ function LeftSideBar() {
                             <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                                 <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9M9 7h6m-7 3h8" /></svg>
                                 <span className="flex-1 ms-3 whitespace-nowrap">Track Application Status</span>
-                                
+
                             </Link>
                         </li>
 
@@ -63,18 +67,7 @@ function LeftSideBar() {
 
                                                 const value = e.target.value;
 
-                                                const params = new URLSearchParams(location.search);
-
-                                                if (value) {
-                                                    params.set("JobType", value);
-                                                }
-                                                else {
-                                                    params.delete("JobType");
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterJobType(value,navigate,location);
 
                                             }}
                                         />
@@ -95,18 +88,7 @@ function LeftSideBar() {
 
                                                 const value = e.target.value;
 
-                                                const params = new URLSearchParams(location.search);
-
-                                                if (value) {
-                                                    params.set("JobType", value);
-                                                }
-                                                else {
-                                                    params.delete("JobType");
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterJobType(value,navigate,location);
 
                                             }}
                                         />
@@ -127,18 +109,7 @@ function LeftSideBar() {
 
                                                 const value = e.target.value;
 
-                                                const params = new URLSearchParams(location.search);
-
-                                                if (value) {
-                                                    params.set("JobType", value);
-                                                }
-                                                else {
-                                                    params.delete("JobType");
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterJobType(value,navigate,location);
 
                                             }}
                                         />
@@ -164,15 +135,7 @@ function LeftSideBar() {
                                             checked={new URLSearchParams(location.search).get("minExp") === "0"}
                                             onChange={(e) => {
 
-
-                                                const params = new URLSearchParams(location.search);
-
-                                                params.set("minExp", 0);
-                                                params.set("maxExp", 2);
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterExperience(0,2,navigate,location);
 
                                             }}
                                         />
@@ -191,15 +154,8 @@ function LeftSideBar() {
                                             checked={new URLSearchParams(location.search).get("minExp") === "2"}
                                             onChange={(e) => {
 
-                                                const params = new URLSearchParams(location.search);
+                                                filterExperience(2,4,navigate,location);
 
-                                                params.set("minExp", 2);
-                                                params.set("maxExp", 4);
-
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
 
                                             }}
                                         />
@@ -250,14 +206,8 @@ function LeftSideBar() {
                                             checked={new URLSearchParams(location.search).get("minSalary") === "0"}
                                             onChange={(e) => {
 
-                                                const params = new URLSearchParams(location.search);
+                                                filterSalary(0,300000);
 
-                                                params.set("minSalary", 0);
-                                                params.set("maxSalary", 300000);
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
 
                                             }}
                                         />
@@ -276,14 +226,7 @@ function LeftSideBar() {
                                             checked={new URLSearchParams(location.search).get("minSalary") === "300000"}
                                             onChange={(e) => {
 
-                                                const params = new URLSearchParams(location.search);
-
-                                                params.set("minSalary", 300000);
-                                                params.set("maxSalary", 600000);
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSalary(300000,600000,navigate,location);
 
                                             }}
                                         />
@@ -302,14 +245,7 @@ function LeftSideBar() {
                                             checked={new URLSearchParams(location.search).get("minSalary") === "600000"}
                                             onChange={(e) => {
 
-                                                const params = new URLSearchParams(location.search);
-
-                                                params.set("minSalary", 600000);
-                                                params.set("maxSalary", 1000000);
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSalary(600000,1000000,navigate,location);
 
                                             }}
                                         />
@@ -383,18 +319,10 @@ function LeftSideBar() {
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input type="checkbox"
                                             onChange={(e) => {
-                                                const params = new URLSearchParams(location.search);
+                                                const value=e.target.checked;
 
-                                                if (e.target.checked) {
-                                                    params.append("skills", "React");
-                                                }
-                                                else {
-                                                    params.delete("skills", "React")
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSkills("React",value,navigate,location);
+                                               
                                             }}
 
                                         />
@@ -406,19 +334,11 @@ function LeftSideBar() {
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input type="checkbox"
                                             onChange={(e) => {
-                                                const params = new URLSearchParams(location.search);
 
+                                                const value=e.target.checked;
 
-                                                if (e.target.checked) {
-                                                    params.append("skills", "NodeJs");
-                                                }
-                                                else {
-                                                    params.delete("skills", "NodeJs")
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSkills("NodeJs",value,navigate,location);
+                                                
                                             }}
 
                                         />
@@ -430,19 +350,10 @@ function LeftSideBar() {
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input type="checkbox"
                                             onChange={(e) => {
-                                                const params = new URLSearchParams(location.search);
+                                                const value=e.target.checked;
 
-
-                                                if (e.target.checked) {
-                                                    params.append("skills", "JavaScript");
-                                                }
-                                                else {
-                                                    params.delete("skills", "JavaScript")
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSkills("JavaScript",value,navigate,location);
+                                                
                                             }}
 
                                         />
@@ -454,19 +365,10 @@ function LeftSideBar() {
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input type="checkbox"
                                             onChange={(e) => {
-                                                const params = new URLSearchParams(location.search);
+                                                const value=e.target.checked;
 
-
-                                                if (e.target.checked) {
-                                                    params.append("skills", "Tailwind");
-                                                }
-                                                else {
-                                                    params.delete("skills", "Tailwind")
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSkills("Tailwind",value,navigate,location);
+                                                
                                             }}
 
                                         />
@@ -478,19 +380,10 @@ function LeftSideBar() {
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input type="checkbox"
                                             onChange={(e) => {
-                                                const params = new URLSearchParams(location.search);
+                                                const value=e.target.checked;
 
-
-                                                if (e.target.checked) {
-                                                    params.append("skills", "Angular");
-                                                }
-                                                else {
-                                                    params.delete("skills", "Angular")
-                                                }
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
+                                                filterSkills("Angular",value,navigate,location);
+                                                
                                             }}
 
                                         />
