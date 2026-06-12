@@ -10,16 +10,18 @@ import { useLocation } from 'react-router-dom';
 function DisplayBody() {
 
   const [Jobs, setJobs] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  const role = user?.Role || null;
 
-  const location=useLocation();
+  const location = useLocation();
 
   useEffect(() => {
 
     const fetchAvailableJobs = async () => {
 
-      const params= new URLSearchParams(location.search);
+      const params = new URLSearchParams(location.search);
 
-      const res=await api.getAvailableJobs("?"+params.toString());
+      const res = await api.getAvailableJobs("?" + params.toString());
 
       console.log(res.data.Jobs);
 
@@ -33,7 +35,7 @@ function DisplayBody() {
   return (
     <>
 
-      <LeftSideBar />
+      <LeftSideBar role={role} />
 
       <div className='w-[60%] min-h-screen bg-slate-100 ml-[28%] mt-[3%] pl-[3%] pt-[2%]'>
         {Jobs.map(job => {
@@ -42,9 +44,7 @@ function DisplayBody() {
       </div>
 
     </>
-
   )
-
 }
 
 

@@ -22,26 +22,13 @@ const loginData = async (data) => {
 
 const getAvailableJobs = async (params) => {
     try {
-        const token = localStorage.getItem("token")
-        const res = await axios.post(`http://127.0.0.1:4000/display/jobs${params}`,
-            {
-                Mode: "available"
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-
-            }
-        )
-
+        const res = await axios.get(`http://127.0.0.1:4000/display/jobs${params}`);
         return res;
 
     } catch (error) {
         console.log(error)
 
     }
-
 }
 
 const postUserApplication = async (JobId, Resume, Msg , Email) => {

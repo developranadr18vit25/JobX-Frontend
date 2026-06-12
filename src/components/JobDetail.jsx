@@ -93,21 +93,6 @@ function JobDetail() {
 
                     </div>
 
-                    {/* <div className="bg-white h-300 w-[45%] mt-[3%] ml-[3%] p-6 border-2 rounded-4xl shadow-xs">
-                        <h1 className='text-2xl pl-[30%]'>Job Description</h1>
-                        <div className='h-[90%] bg-blue-100 mt-[5%] ml-[4%] w-[90%] p-10'>
-                            {Job.Description}
-
-                            <ul className='list-disc ml-6 mt-10'>
-                                <li>Role:  {Job.Title}</li>
-                                <li>Employment Type:  {Job.JobType}</li>
-                                <li>Status:  {Job.Status}</li>
-
-                            </ul>
-
-                        </div>
-                    </div> */}
-
                 </div>
 
             </div>

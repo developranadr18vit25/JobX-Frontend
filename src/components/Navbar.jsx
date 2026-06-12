@@ -70,7 +70,6 @@ function Navbar({user,setuser}) {
                                 <LogoutButton setuser={setuser} />
                             </div>
                             </>
-
                         }
 
                     </div>
