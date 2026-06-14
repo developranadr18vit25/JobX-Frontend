@@ -18,14 +18,13 @@ function JobDetail() {
     useEffect(() => {
 
         const checkIfApplied = async () => {
-
             try {
 
                 const res = await api.jobAlreadyApplied(JobId);
-                setIsApplied(false);
+                setIsApplied(res.data.Applied);
 
             } catch (error) {
-                setIsApplied(true);
+                console.log(error);
             }
         }
 
@@ -36,7 +35,12 @@ function JobDetail() {
 
         const getJobData = async () => {
 
-            const res = await api.getAvailableJobs(`/${JobId}`);
+            const res = await api.getDetailOfJob(`/${JobId}`);
+
+
+            // console.log("FULL RESPONSE:", res);
+            // console.log("DATA:", res.data);
+
             console.log(res.data.Job[0]);
             setJob(res.data.Job[0]);
         }
@@ -61,7 +65,7 @@ function JobDetail() {
                             {Job.Title}
                         </h5>
 
-                        <p className="text-body mb-2">{Job.CompanyName}</p>
+                        <p className="text-body mb-2">{Job.Company}</p>
                         <p className="text-body mb-2">Location: {Job.Location}</p>
                         <p className="text-body mb-2">JobType: {Job.JobType}</p>
                         <p className="text-body mb-2">Experience: {Job.Experience} years</p>
