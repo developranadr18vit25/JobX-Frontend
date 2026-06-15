@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import JobCard from './JobCard'
 import api from '../api/getData'
-import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LeftSideBar from './LeftSideBar';
-import { useLocation } from 'react-router-dom';
-
 
 function DisplayBody() {
 
@@ -20,10 +17,7 @@ function DisplayBody() {
     const fetchAvailableJobs = async () => {
 
       const params = new URLSearchParams(location.search);
-
       const res = await api.getAvailableJobs("?" + params.toString());
-
-      console.log(res.data.Jobs);
 
       setJobs(res.data.Jobs);
     }
@@ -34,18 +28,38 @@ function DisplayBody() {
 
   return (
     <>
-
       <LeftSideBar role={role} />
 
-      <div className='w-[60%] min-h-screen bg-slate-100 ml-[28%] mt-[3%] pl-[3%] pt-[2%]'>
-        {Jobs.map(job => {
-          return <JobCard Role={job.Title} CompanyName={job.Company} Location={job.Location} JobType={job.JobType} Experience={job.Experience} JobId={job.JobId} />
-        })}
-      </div>
+      <div className="ml-[28%] mt-[3%] w-[65%] min-h-screen bg-gray-50 px-6 py-6">
 
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="text-2xl font-semibold text-gray-900">
+            Explore Jobs
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Find roles matching your skills and experience
+          </p>
+        </div>
+
+        {/* Feed container */}
+        <div className="space-y-5">
+          {Jobs.map(job => (
+            <JobCard
+              key={job.JobId}
+              Role={job.Title}
+              CompanyName={job.Company}
+              Location={job.Location}
+              JobType={job.JobType}
+              Experience={job.Experience}
+              JobId={job.JobId}
+            />
+          ))}
+        </div>
+
+      </div>
     </>
   )
 }
-
 
 export default DisplayBody

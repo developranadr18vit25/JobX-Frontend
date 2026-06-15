@@ -1,443 +1,178 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { filterJobType } from '../hooks/sideBarFilters';
-import { filterExperience } from '../hooks/sideBarFilters';
-import { filterSalary } from '../hooks/sideBarFilters';
-import { filterSkills } from '../hooks/sideBarFilters';
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { filterJobType, filterExperience, filterSalary, filterSkills } from '../hooks/sideBarFilters'
 
-function userSideBarView() {
+function UserSideBarView() {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const params = new URLSearchParams(location.search);
+
     return (
-        <>
-
-            <aside id="separator-sidebar" className="fixed top-[10%] left-[2%] z-40 w-64 h-[90vh] overflow-y-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-                <h1 className='text-3xl'>All filters</h1>
-                <div className="h-full px-3 py-4 bg-neutral-primary-soft border-e border-default">
-                    <ul className="space-y-2 font-medium">
-                        <li>
-                            <Link to="/" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="ms-3">Dashboard</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="ms-3">Browse Jobs</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Internships</span>
-                                <span className="bg-neutral-secondary-medium border border-default-medium text-heading text-xs font-medium px-1.5 py-0.5 rounded-sm">Pro</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Track Application Status</span>
-
-                            </Link>
-                        </li>
-
-                        <div className="border-b border-gray-700"></div>
-
-                        <h2 className='text-2xl'> Filters</h2>
-
-                        <li className="group relative">
-                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
-                                Job Type
-                            </div>
-
-                            <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="jobType"
-                                            value="Remote"
-                                            checked={new URLSearchParams(location.search).get("JobType") === "Remote"}
-                                            onChange={(e) => {
-
-                                                const value = e.target.value;
-
-                                                filterJobType(value, navigate, location);
-                                            }}
-                                        />
-
-                                        <span>Remote</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="jobType"
-                                            value="Hybrid"
-                                            checked={new URLSearchParams(location.search).get("JobType") === "Hybrid"}
-                                            onChange={(e) => {
-
-                                                const value = e.target.value;
-
-                                                filterJobType(value, navigate, location);
-
-                                            }}
-                                        />
-
-                                        <span>Hybrid</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="jobType"
-                                            value="OnSite"
-                                            checked={new URLSearchParams(location.search).get("JobType") === "OnSite"}
-                                            onChange={(e) => {
-
-                                                const value = e.target.value;
-
-                                                filterJobType(value, navigate, location);
-
-                                            }}
-                                        />
-
-                                        <span>OnSite</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="group relative">
-                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
-                                Experience
-                            </div>
-
-                            <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Experience"
-                                            value="0-2"
-                                            checked={new URLSearchParams(location.search).get("minExp") === "0"}
-                                            onChange={(e) => {
-
-                                                filterExperience(0, 2, navigate, location);
-
-                                            }}
-                                        />
-
-                                        <span>0-2 yrs</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Experience"
-                                            value="2-4"
-                                            checked={new URLSearchParams(location.search).get("minExp") === "2"}
-                                            onChange={(e) => {
-
-                                                filterExperience(2, 4, navigate, location);
-                                            }}
-                                        />
-
-                                        <span>2-4 yrs</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Experience"
-                                            value="4+"
-                                            checked={new URLSearchParams(location.search).get("minExp") === "4"}
-                                            onChange={(e) => {
-
-                                                const params = new URLSearchParams(location.search);
-
-                                                params.set("minExp", 4);
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
-
-                                            }}
-                                        />
-
-                                        <span>4+ yrs</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="group relative">
-                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
-                                Salary
-                            </div>
-
-                            <ul className="hidden group-hover:block pl-10 text-sm space-y-1">
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Salary"
-                                            value="0-3"
-                                            checked={new URLSearchParams(location.search).get("minSalary") === "0"}
-                                            onChange={(e) => {
-
-                                                filterSalary(0, 300000);
-
-
-                                            }}
-                                        />
-
-                                        <span>0-3 LPA</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Salary"
-                                            value="3-6"
-                                            checked={new URLSearchParams(location.search).get("minSalary") === "300000"}
-                                            onChange={(e) => {
-
-                                                filterSalary(300000, 600000, navigate, location);
-
-                                            }}
-                                        />
-
-                                        <span>3-6 LPA</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Salary"
-                                            value="6-10"
-                                            checked={new URLSearchParams(location.search).get("minSalary") === "600000"}
-                                            onChange={(e) => {
-
-                                                filterSalary(600000, 1000000, navigate, location);
-
-                                            }}
-                                        />
-
-                                        <span>6-10 LPA</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-
-                                        <input
-                                            type="radio"
-                                            name="Salary"
-                                            value="10+"
-                                            checked={new URLSearchParams(location.search).get("minSalary") === "1000000"}
-                                            onChange={(e) => {
-
-                                                const params = new URLSearchParams(location.search);
-
-                                                params.set("minSalary", 1000000);
-                                                params.delete("maxSalary");
-
-                                                const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                                navigate(newUrl);
-
-                                            }}
-                                        />
-
-                                        <span>10+ LPA</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="px-2 py-2">
-                            <div className="text-body font-medium mb-1">
-                                Location
-                            </div>
-
-                            <input
-                                type="text"
-                                placeholder="Enter location (e.g. Gurgaon, Remote)"
-                                className="w-full px-2 py-1 border rounded text-sm"
-                                onChange={(e) => {
-                                    const value = e.target.value;
-
-                                    const params = new URLSearchParams(location.search);
-
-                                    if (value) {
-                                        params.set("location", value);
-                                    }
-                                    else {
-                                        params.delete("location")
-                                    }
-
-                                    const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-                                    navigate(newUrl)
-                                }}
-                            />
-                        </li>
-
-                        <li className="group relative">
-                            <div className="flex items-center px-2 py-1.5 cursor-pointer">
-                                Popular Skills
-                            </div>
-
-                            <ul className="hidden group-hover:block pl-10 text-sm space-y-2">
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox"
-                                            onChange={(e) => {
-                                                const value = e.target.checked;
-
-                                                filterSkills("React", value, navigate, location);
-
-                                            }}
-
-                                        />
-                                        <span>React</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox"
-                                            onChange={(e) => {
-
-                                                const value = e.target.checked;
-
-                                                filterSkills("NodeJs", value, navigate, location);
-
-                                            }}
-
-                                        />
-                                        <span>Node JS</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox"
-                                            onChange={(e) => {
-                                                const value = e.target.checked;
-
-                                                filterSkills("JavaScript", value, navigate, location);
-
-                                            }}
-
-                                        />
-                                        <span>JavaScript</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox"
-                                            onChange={(e) => {
-                                                const value = e.target.checked;
-
-                                                filterSkills("Tailwind", value, navigate, location);
-
-                                            }}
-
-                                        />
-                                        <span>Tailwind</span>
-                                    </label>
-                                </li>
-
-                                <li>
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox"
-                                            onChange={(e) => {
-                                                const value = e.target.checked;
-
-                                                filterSkills("Angular", value, navigate, location);
-                                            }}
-
-                                        />
-                                        <span>Angular</span>
-                                    </label>
-                                </li>
-
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <div className="border-b border-gray-700"></div>
-
-                    <h2 className='text-2xl'>Quick Actions</h2>
-
-
-
-                    <ul className="pt-4 mt-1">
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Upload Resume</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Track Applications</span>
-                            </Link>
-                        </li>
-                        <div>
-                            <div className="border-b border-gray-700"></div>
-
-                            <h2 className='text-2xl'>Profile Completion</h2>
-
-                            <ul>
-                                <li>
-                                    <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                        <span className="flex-1 ms-3 whitespace-nowrap">Salary</span>
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                        <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" />
-                                        </svg>
-                                        <span className="flex-1 ms-3 whitespace-nowrap">Salary</span>
-                                    </Link>
-                                </li>
-                            </ul>
-
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m10.051 8.102-3.778.322-1.994 1.994a.94.94 0 0 0 .533 1.6l2.698.316m8.39 1.617-.322 3.78-1.994 1.994a.94.94 0 0 1-1.595-.533l-.4-2.652m8.166-11.174a1.366 1.366 0 0 0-1.12-1.12c-1.616-.279-4.906-.623-6.38.853-1.671 1.672-5.211 8.015-6.31 10.023a.932.932 0 0 0 .162 1.111l.828.835.833.832a.932.932 0 0 0 1.111.163c2.008-1.102 8.35-4.642 10.021-6.312 1.475-1.478 1.133-4.77.855-6.385Zm-2.961 3.722a1.88 1.88 0 1 1-3.76 0 1.88 1.88 0 0 1 3.76 0Z" />
-                                </svg>
-                                <span className="flex-1 ms-3 whitespace-nowrap">PRO version</span>
-                            </Link>
-                        </div>
-                    </ul>
+        <aside className="fixed top-[10%] left-[2%] z-40 w-80 h-[90vh] overflow-y-auto rounded-2xl
+        bg-linear-to-b from-white via-gray-50 to-white
+        border border-gray-200 shadow-2xl backdrop-blur-xl">
+
+        
+            <div className="px-5 py-5 border-b bg-white/60 backdrop-blur-md rounded-t-2xl">
+                <h1 className="text-lg font-semibold text-gray-800 tracking-tight">🎯 Job Filters</h1>
+                <p className="text-xs text-gray-500">Refine your opportunities</p>
+            </div>
+
+            <div className="p-4 space-y-5">
+
+       
+                <div className="rounded-xl bg-white shadow-sm border p-3 space-y-1">
+                    <Link to="/" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">Dashboard</Link>
+                    <Link to="/jobs" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">Browse Jobs</Link>
+
+                    <Link to="#" className="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Internships
+                        <span className="text-[10px] px-2 py-0.5 bg-black text-white rounded-full">PRO</span>
+                    </Link>
+
+                    <Link to="/jobs/applied" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Track Applications
+                    </Link>
                 </div>
-            </aside>
-        </>
+
+ 
+                <div className="space-y-4">
+
+            
+                    <div className="rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition">
+                        <h2 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Job Type</h2>
+
+                        <div className="space-y-2">
+                            {["Remote", "Hybrid", "OnSite"].map(type => (
+                                <label key={type} className="flex items-center gap-3 cursor-pointer group">
+                                    <input
+                                        type="radio"
+                                        name="jobType"
+                                        value={type}
+                                        checked={params.get("JobType") === type}
+                                        onChange={(e) => filterJobType(e.target.value, navigate, location)}
+                                        className="accent-black scale-110"
+                                    />
+                                    <span className="text-sm text-gray-700 group-hover:text-black transition">
+                                        {type}
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    
+                    <div className="rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition">
+                        <h2 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Experience</h2>
+
+                        <div className="space-y-2">
+                            <label className="flex gap-3 items-center cursor-pointer">
+                                <input type="radio" name="Experience" className="accent-black" checked={params.get("minExp") === "0"} onChange={() => filterExperience(0, 2, navigate, location)} />
+                                <span className="text-sm">0–2 yrs</span>
+                            </label>
+
+                            <label className="flex gap-3 items-center cursor-pointer">
+                                <input type="radio" name="Experience" className="accent-black" checked={params.get("minExp") === "2"} onChange={() => filterExperience(2, 4, navigate, location)} />
+                                <span className="text-sm">2–4 yrs</span>
+                            </label>
+
+                            <label className="flex gap-3 items-center cursor-pointer">
+                                <input type="radio" name="Experience" className="accent-black" checked={params.get("minExp") === "4"} onChange={() => {
+                                    const p = new URLSearchParams(location.search)
+                                    p.set("minExp", 4)
+                                    navigate(`${window.location.pathname}?${p.toString()}`)
+                                }} />
+                                <span className="text-sm">4+ yrs</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    
+                    <div className="rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition">
+                        <h2 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Salary</h2>
+
+                        <div className="space-y-2">
+                            <label className="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" className="accent-black" checked={params.get("minSalary") === "0"} onChange={() => filterSalary(0, 300000)} />
+                                <span className="text-sm">0–3 LPA</span>
+                            </label>
+
+                            <label className="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" className="accent-black" checked={params.get("minSalary") === "300000"} onChange={() => filterSalary(300000, 600000, navigate, location)} />
+                                <span className="text-sm">3–6 LPA</span>
+                            </label>
+
+                            <label className="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" className="accent-black" checked={params.get("minSalary") === "600000"} onChange={() => filterSalary(600000, 1000000, navigate, location)} />
+                                <span className="text-sm">6–10 LPA</span>
+                            </label>
+
+                            <label className="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" className="accent-black" checked={params.get("minSalary") === "1000000"} onChange={() => {
+                                    const p = new URLSearchParams(location.search)
+                                    p.set("minSalary", 1000000)
+                                    p.delete("maxSalary")
+                                    navigate(`${window.location.pathname}?${p.toString()}`)
+                                }} />
+                                <span className="text-sm">10+ LPA</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition">
+                        <h2 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Location</h2>
+
+                        <input
+                            type="text"
+                            placeholder="Gurgaon / Remote / Bangalore"
+                            className="w-full px-3 py-2 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-black/20"
+                            onChange={(e) => {
+                                const p = new URLSearchParams(location.search)
+                                if (e.target.value) p.set("location", e.target.value)
+                                else p.delete("location")
+                                navigate(`${window.location.pathname}?${p.toString()}`)
+                            }}
+                        />
+                    </div>
+
+            
+                    <div className="rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition">
+                        <h2 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Skills</h2>
+
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                            {["React", "NodeJs", "JavaScript", "Tailwind", "Angular"].map(skill => (
+                                <label key={skill} className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        className="accent-black"
+                                        onChange={(e) => filterSkills(skill, e.target.checked, navigate, location)}
+                                    />
+                                    <span className="text-gray-700 hover:text-black transition">{skill}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+
+        
+                <div className="rounded-xl bg-black text-white p-4 shadow-lg">
+                    <h2 className="text-xs uppercase tracking-wider text-gray-300 mb-3">Quick Actions</h2>
+
+                    <div className="space-y-2">
+                        <Link to="#" className="block px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm transition">
+                            Upload Resume
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm transition">
+                            Track Applications
+                        </Link>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
     )
 }
 
-export default userSideBarView
+export default UserSideBarView

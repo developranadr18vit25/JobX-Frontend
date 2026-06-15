@@ -1,23 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import UserSideBarView from './userSideBarView';
+import UserSideBarView from './UserSideBarView';
 import RecruiterSideBarView from './RecruiterSideBarView';
 
+function LeftSideBar({ role }) {
 
-
-function LeftSideBar({role}) {
     return (
         <>
 
-        {role=="Applicant" ? <>
-        <UserSideBarView /> 
-        </> :
-        <>
-        <RecruiterSideBarView /> 
-        </>
-        }
-        
-            
+            {!role ? (<UserSideBarView />) : role == "Applicant" ? (<UserSideBarView />) : (<RecruiterSideBarView />)
+            }
+
         </>
     )
 }

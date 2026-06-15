@@ -1,66 +1,128 @@
 import React from 'react'
 import SearchButton from './SearchButton'
 import { useState } from 'react'
-import api from '../api/getData';
+import api from '../api/getData'
 
 function SignUpCard() {
 
-    const [name , setname]=useState("");
-    const [username,setusername]=useState("");
-    const [password,setpassword]=useState("");
-    const [purpose, setpurpose]=useState("");
+    const [name, setname] = useState("");
+    const [username, setusername] = useState("");
+    const [password, setpassword] = useState("");
+    const [purpose, setpurpose] = useState("");
 
-    const handleRegistration=async()=>{
-        const res=await api.postRegistrationData({
-            Name:name,
-            Username:username,
-            Password:password,
-            Role:purpose
+    const handleRegistration = async () => {
+        const res = await api.postRegistrationData({
+            Name: name,
+            Username: username,
+            Password: password,
+            Role: purpose
         });
         console.log(res.data.msg)
     }
 
     return (
-        <div className='h-170 w-[70%] bg-white border-2 border-gray-400 rounded-3xl m-auto mt-[3%] flex flex-col'>
-            <div className='h-10 w-[30%] bg-white mt-[3%] ml-[4%] pl-7 text-xl text-black font-bold'> Create your jobx profile</div>
+        <div className="w-[75%] mx-auto mt-10">
 
-            <div className='h-[90%] w-[80%] bg-white ml-[5%] mt-[1%] pt-[3%] pl-[3%] flex flex-col gap-7'>
-                <div className='h-[12%] w-[90%] bg-white flex flex-col '>
-                    <h1 className='text-l font-semibold'>Full Name</h1>
-                    <input type="text" placeholder='What is your name?' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setname(e.target.value)} />
-                </div>
-                <div className='h-[12%] w-[90%] bg-white flex flex-col '>
-                    <h1 className='text-l font-semibold'>Username</h1>
-                    <input type="text" placeholder='Tell us your Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setusername(e.target.value)} />
-                </div>
-                <div className='h-[12%] w-[90%] bg-white flex flex-col '>
-                    <h1 className='text-l font-semibold'>Password</h1>
-                    <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setpassword(e.target.value)} />
-                </div>
-                <div className='h-[12%] w-[90%] bg-white flex flex-col '>
-                    <h1 className='text-l font-semibold'>State your purpose</h1>
-                    <label>
-                        <input type="radio" name="q1" value="Applicant" className='mb-[2%] mt-[2%]'  onChange={(e)=>setpurpose(e.target.value)}/> Applicant
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="Recruiter" onChange={(e)=>setpurpose(e.target.value)} /> Recruiter
-                    </label>
+            <div className="relative bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden flex">
+
+                <div className="w-[65%] p-10">
+
+                    <h1 className="text-2xl font-semibold text-gray-900">
+                        Create your jobx profile 🚀
+                    </h1>
+
+                    <p className="text-sm text-gray-500 mt-2 mb-8">
+                        Join as applicant or recruiter in seconds
+                    </p>
+
+            
+                    <div className="mb-5">
+                        <label className="text-sm font-medium text-gray-700">Full Name</label>
+                        <input
+                            type="text"
+                            placeholder="What is your name?"
+                            className="w-full mt-2 px-4 py-3 border border-gray-200 rounded-xl
+                            focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
+                            onChange={(e) => setname(e.target.value)}
+                        />
+                    </div>
+
+              
+                    <div className="mb-5">
+                        <label className="text-sm font-medium text-gray-700">Username</label>
+                        <input
+                            type="text"
+                            placeholder="Choose a username"
+                            className="w-full mt-2 px-4 py-3 border border-gray-200 rounded-xl
+                            focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
+                            onChange={(e) => setusername(e.target.value)}
+                        />
+                    </div>
+
+          
+                    <div className="mb-5">
+                        <label className="text-sm font-medium text-gray-700">Password</label>
+                        <input
+                            type="password"
+                            placeholder="Create a strong password"
+                            className="w-full mt-2 px-4 py-3 border border-gray-200 rounded-xl
+                            focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
+                            onChange={(e) => setpassword(e.target.value)}
+                        />
+                    </div>
+
+             
+                    <div className="mb-6">
+                        <h2 className="text-sm font-medium text-gray-700 mb-3">
+                            I want to join as
+                        </h2>
+
+                        <div className="flex gap-6 text-sm">
+
+                            <label className="flex items-center gap-2 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    name="q1"
+                                    value="Applicant"
+                                    onChange={(e) => setpurpose(e.target.value)}
+                                    className="accent-black"
+                                />
+                                Applicant
+                            </label>
+
+                            <label className="flex items-center gap-2 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    name="q1"
+                                    value="Recruiter"
+                                    onChange={(e) => setpurpose(e.target.value)}
+                                    className="accent-black"
+                                />
+                                Recruiter
+                            </label>
+
+                        </div>
+                    </div>
+
+                 
+                    <div className="mt-8">
+                        <SearchButton content="Create Account" onClick={handleRegistration} />
+                    </div>
+
                 </div>
 
-                {/* <div className='h-[15%] w-[90%] bg-blue-500 flex flex-col pt-10 mb-5'>
-                    <h1 className='text-l font-semibold'>Purpose</h1>
-                    <input type="text" placeholder='What is your name?' className='w-[70%] h-10 mt-[2%]' />
-                </div> */}
-                <div className="mt-6 flex justify-center">
-                    <SearchButton content="Register Now" onClick={handleRegistration} />
+   
+                <div className="w-[35%] bg-gradient-to-br from-gray-50 via-white to-gray-100 flex items-center justify-center p-6">
+
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0CSkXjKl0QEa4QCSXkRd5TByPC-O6LPfIXQ&s"
+                        alt="signup"
+                        className="w-[90%] object-contain drop-shadow-xl"
+                    />
+
                 </div>
-                <div className='absolute top-[16%] right-[17%] h-[70%] w-[27%] bg-amber-500 flex flex-row justify-center align-middle'>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0CSkXjKl0QEa4QCSXkRd5TByPC-O6LPfIXQ&s" alt="image" />
-                </div>
+
             </div>
-
-            {/* <SearchButton /> */}
-
         </div>
     )
 }

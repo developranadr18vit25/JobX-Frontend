@@ -4,63 +4,99 @@ import api from '../api/getData'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UserLoginCard({setuser}) {
+function UserLoginCard({ setuser }) {
 
-    const [Username, setUsername]=useState("");
-    const [Password, setPassword]=useState("");
-    const [loginMsg, setloginMsg]=useState("");
-    const navigate=useNavigate();
+    const [Username, setUsername] = useState("");
+    const [Password, setPassword] = useState("");
+    const [loginMsg, setloginMsg] = useState("");
+    const navigate = useNavigate();
 
-    const handleUserLogin=async()=>{
-        const res=await api.loginData({
-            Username:Username,
-            Password:Password
+    const handleUserLogin = async () => {
+        const res = await api.loginData({
+            Username: Username,
+            Password: Password
         })
-        // setloginMsg(res.data.AccessToken);
 
-        if(res.status===200){
-            localStorage.setItem("user" , JSON.stringify(res.data.user));
-            localStorage.setItem("token",res.data.AccessToken);
+        if (res.status === 200) {
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+            localStorage.setItem("token", res.data.AccessToken);
 
             setuser(res.data.user);
-            
         }
-
-        // if(res.status=200){
-        //     navigate("/hi")
-        // }
 
         console.log(res.data.AccessToken);
         console.log(res.data.user);
     }
 
-
     return (
-        <>
-            <div className='h-130 w-[70%] bg-white border-2 border-gray-400 rounded-3xl m-auto mt-[3%] flex flex-col relative'>
-                <div className='h-10 w-[30%] bg-white mt-[3%] ml-[4%] pl-7 text-2xl text-black font-bold'>Login</div>
+        <div className="w-[70%] mx-auto mt-10">
 
-                <div className='h-100 w-[95%] bg-white ml-[3%] mt-[1%] pt-[3%] pl-[3%] flex flex-col gap-7'>
-                    <div className='h-[30%] w-[55%] bg-white flex flex-col'>
-                        <h1 className='text-l font-semibold'>Username</h1>
-                        <input type="text" placeholder='Enter your active Username' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setUsername(e.target.value)} />
-                    </div>
-                    <div className='h-[30%] w-[55%] bg-white flex flex-col '>
-                        <h1 className='text-l font-semibold'>Password</h1>
-                        <input type="text" placeholder='Enter your password' className='w-[70%] h-13 mt-[2%] border border-gray-300 pl-4 rounded-2xl' onChange={(e)=>setPassword(e.target.value)} />
+            <div className="relative bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden flex">
+
+         
+                <div className="w-[60%] p-10">
+
+        
+                    <h1 className="text-2xl font-semibold text-gray-900 mb-6">
+                        Welcome back 👋
+                    </h1>
+
+                    <p className="text-sm text-gray-500 mb-8">
+                        Login to continue exploring jobs
+                    </p>
+
+
+                    <div className="mb-6">
+                        <label className="text-sm font-medium text-gray-700">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your active username"
+                            className="w-full mt-2 px-4 py-3 border border-gray-200 rounded-xl
+                            focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black
+                            transition"
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
 
-                    <div className="mt-6">
+
+                    <div className="mb-6">
+                        <label className="text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            placeholder="Enter your password"
+                            className="w-full mt-2 px-4 py-3 border border-gray-200 rounded-xl
+                            focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black
+                            transition"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+
+
+                    <div className="mt-8">
                         <SearchButton content="Login" onClick={handleUserLogin} />
-                    </div>
-                    <div className='absolute top-20 right-7 h-[75%] w-[35%] bg-white flex items-center justify-center'>
-                        <img src="https://static.vecteezy.com/system/resources/previews/021/919/677/non_2x/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg" alt="Login" className='h-[95%] w-[95%]'  />
-
                     </div>
 
                 </div>
+
+
+                <div className="w-[40%] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6">
+
+                    <img
+                        src="https://static.vecteezy.com/system/resources/previews/021/919/677/non_2x/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg"
+                        alt="Login"
+                        className="w-[90%] h-auto object-contain drop-shadow-xl"
+                    />
+
+                </div>
+
             </div>
-        </>
+        </div>
     )
 }
 

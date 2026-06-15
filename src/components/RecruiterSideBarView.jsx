@@ -3,75 +3,99 @@ import { Link } from 'react-router-dom'
 
 function RecruiterSideBarView() {
     return (
-        <>
-            <aside id="separator-sidebar" className="fixed top-[10%] left-[2%] z-40 w-64 h-[90vh] overflow-y-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-                <h1 className='text-3xl'>All filters</h1>
-                <div className="h-full px-3 py-4 bg-neutral-primary-soft border-e border-default">
-                    <ul className="space-y-2 font-medium">
-                        <li>
-                            <Link to="/" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="ms-3">Dashboard</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="ms-3">Post a Job</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="#" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Manage Jobs</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">All Applications</span>
+        <aside className="fixed top-[10%] left-[2%] z-40 w-80 h-[90vh] overflow-y-auto rounded-2xl
+        bg-linear-to-b from-white via-gray-50 to-white
+        border border-gray-200 shadow-2xl backdrop-blur-xl">
 
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Shortlisted Candidates</span>
+            
+            <div className="px-5 py-5 border-b bg-white/60 backdrop-blur-md rounded-t-2xl">
+                <h1 className="text-lg font-semibold text-gray-800">🏢 Recruiter Panel</h1>
+                <p className="text-xs text-gray-500">Manage hiring workflow</p>
+            </div>
 
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Hired Candidates</span>
+            <div className="p-4 space-y-4">
 
-                            </Link>
-                        </li>
+        
+                <div className="rounded-xl border bg-white shadow-sm p-3 space-y-1">
 
-                        <div className="border-b border-gray-700"></div>
+                    <Link to="/" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Dashboard
+                    </Link>
 
-                        <h2 className='text-2xl'> Company</h2>
+                    <Link to="/jobs" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Post a Job
+                    </Link>
 
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Company Profile</span>
+                    <Link to="#" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Manage Jobs
+                    </Link>
 
-                            </Link>
-                        </li>
+                    <Link to="/jobs/applied" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        All Applications
+                    </Link>
 
-                        <h2 className='text-2xl'> Tools</h2>
+                    <Link to="/jobs/applied" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Shortlisted Candidates
+                    </Link>
 
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Talent Search</span>
-
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/jobs/applied" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                                <span className="flex-1 ms-3 whitespace-nowrap">Resume Search</span>
-
-                            </Link>
-                        </li>
-
-                    </ul>
+                    <Link to="/jobs/applied" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                        Hired Candidates
+                    </Link>
                 </div>
-            </aside>
-        </>
+
+                <div className="rounded-xl border bg-white shadow-sm p-4 space-y-2">
+
+                    <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Company
+                    </h2>
+
+                    <Link to="#" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm transition">
+                        Company Profile
+                    </Link>
+                </div>
+
+                {/* TOOLS SECTION */}
+                <div className="rounded-xl border bg-white shadow-sm p-4 space-y-2">
+
+                    <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Tools
+                    </h2>
+
+                    <Link to="#" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm transition">
+                        Talent Search
+                    </Link>
+
+                    <Link to="#" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm transition">
+                        Resume Search
+                    </Link>
+                </div>
+
+              
+                <div className="rounded-xl bg-black text-white p-4 shadow-lg">
+                    <h2 className="text-xs uppercase tracking-wider text-gray-300 mb-3">
+                        Hiring Overview
+                    </h2>
+
+                    <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                            <span className="text-gray-300">Active Jobs</span>
+                            <span className="font-semibold">—</span>
+                        </div>
+
+                        <div className="flex justify-between">
+                            <span className="text-gray-300">Applications</span>
+                            <span className="font-semibold">—</span>
+                        </div>
+
+                        <div className="flex justify-between">
+                            <span className="text-gray-300">Hired</span>
+                            <span className="font-semibold">—</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
     )
 }
 

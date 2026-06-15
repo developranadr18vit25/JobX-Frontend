@@ -22,7 +22,7 @@ const loginData = async (data) => {
 
 const getAvailableJobs = async (params) => {
     try {
-        const res = await axios.get(`http://127.0.0.1:4000/display/jobs`);
+        const res = await axios.get(`http://127.0.0.1:4000/display/jobs${params}`);
         return res;
 
     } catch (error) {
@@ -30,6 +30,7 @@ const getAvailableJobs = async (params) => {
 
     }
 }
+
 
 const getDetailOfJob=async(params)=>{
     const token= localStorage.getItem("token");

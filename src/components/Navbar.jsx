@@ -1,81 +1,115 @@
 import React from 'react'
-import SearchButton from './SearchButton'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom';
-import LogoutButton from './LogoutButton';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom'
+import LogoutButton from './LogoutButton'
 
-function Navbar({user,setuser}) {
+function Navbar({ user, setuser }) {
+
     const navigate = useNavigate();
 
     return (
-        <>
-            <nav className=" sticky top-0  bg-white after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10">
-                <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                    <div className="relative flex h-16 items-center justify-between">
-                        <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                            <div className="flex shrink-0 items-center mr-20">
-                                jobx
-                            </div>
-                            <div className="hidden sm:ml-6 sm:block">
-                                <div className="flex space-x-4">
-                                    <Link to="/" aria-current="page" className="rounded-md  px-3 py-2 text-m font-medium text-black hover:cursor-pointer">Home</Link>
-                                    <Link to="/jobs" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Jobs</Link>
-                                    <Link to="/about" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">About</Link>
-                                    <Link to="/contact" className="rounded-md px-3 py-2 text-m font-medium text-black hover:bg-white/5 hover:cursor-pointer">Contact</Link>
+        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
 
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-                                </div>
-                            </div>
+                <div className="flex h-16 items-center justify-between">
 
+                    {/* LEFT - BRAND + NAV */}
+                    <div className="flex items-center gap-10">
+
+                        {/* Logo */}
+                        <div className="text-xl font-bold tracking-tight text-gray-900">
+                            jobx
                         </div>
 
-                        {!user ?
-                            (
-                                <>
-                                    <button className='bg-white h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl border-2 font-bold cursor-pointer ' onClick={() => navigate("/login")}>Login</button>
-                                    <button className='bg-orange-600 h-12 w-23 mr-6 rounded-br-4xl rounded-bl-4xl rounded-tl-4xl rounded-tr-4xl font-bold text-white cursor-pointer hover:bg-amber-700' onClick={() => navigate("/registration/createAccount")}>Register</button>
+                        {/* Nav Links */}
+                        <div className="hidden sm:flex items-center gap-2">
 
-                                    <div className="relative flex-shrink-0 group">
-                                        <button className="px-4 py-2 cursor-pointer">
-                                            For Employers
-                                        </button>
+                            <Link to="/" className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                                Home
+                            </Link>
 
-                                        <div className="absolute right-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md w-32 z-50">
-                                            <Link
-                                                to="/registration/createAccount/recruit"
-                                                className="block px-4 py-2 hover:bg-gray-100 text-sm"
-                                            >
-                                                Employer Registration
-                                            </Link>
+                            <Link to="/jobs" className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                                Jobs
+                            </Link>
 
-                                            <Link
-                                                to="/login/recruit"
-                                                className="block px-4 py-2 hover:bg-gray-100 text-sm"
-                                            >
-                                                Employer Login
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </>
-                            )
-                            :
+                            <Link to="/about" className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                                About
+                            </Link>
+
+                            <Link to="/contact" className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                                Contact
+                            </Link>
+
+                        </div>
+                    </div>
+
+                    {/* RIGHT SECTION */}
+                    <div className="flex items-center gap-3">
+
+                        {/* NOT LOGGED IN */}
+                        {!user ? (
                             <>
-                            <div>
-                                {user.Username}
-                            </div>
+                                {/* Employer Dropdown */}
+                                <div className="relative group">
 
-                            <div>
-                                <LogoutButton setuser={setuser} />
-                            </div>
+                                    <button className="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition">
+                                        For Employers ▾
+                                    </button>
+
+                                    <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition">
+
+                                        <Link
+                                            to="/registration/createAccount/recruit"
+                                            className="block px-4 py-2 text-sm hover:bg-gray-100"
+                                        >
+                                            Employer Signup
+                                        </Link>
+
+                                        <Link
+                                            to="/login/recruit"
+                                            className="block px-4 py-2 text-sm hover:bg-gray-100"
+                                        >
+                                            Employer Login
+                                        </Link>
+
+                                    </div>
+                                </div>
+
+                                {/* Login */}
+                                <button
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+                                    onClick={() => navigate("/login")}
+                                >
+                                    Login
+                                </button>
+
+                                {/* Register */}
+                                <button
+                                    className="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg hover:bg-gray-800 transition"
+                                    onClick={() => navigate("/registration/createAccount")}
+                                >
+                                    Register
+                                </button>
                             </>
-                        }
+                        ) : (
+                            <>
+                                {/* USER LOGGED IN */}
+                                <div className="flex items-center gap-3">
+
+                                    <div className="px-3 py-1.5 text-sm bg-gray-100 rounded-lg text-gray-700">
+                                        {user.Username}
+                                    </div>
+
+                                    <LogoutButton setuser={setuser} />
+                                </div>
+                            </>
+                        )}
 
                     </div>
+
                 </div>
-            </nav>
-        </>
+            </div>
+        </nav>
     )
 }
 

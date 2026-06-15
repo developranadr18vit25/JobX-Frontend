@@ -1,27 +1,65 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 
-function JobCard({Role, CompanyName, Location , JobType , Experience , JobId}) {
+function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
 
-    const navigate=useNavigate();
     return (
+        <div className="group relative bg-white border border-gray-200 rounded-2xl p-6
+        shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
 
-        <div className=" bg-white bg-neutral-primary-soft block mt-[3%] p-6 border-2  rounded-4xl rounded-base shadow-xs">
-            <h5 className="mb-1 text-2xl font-semibold tracking-tight text-heading leading-8">{Role}</h5>
-            <p className="text-body mb-2">{CompanyName}</p>
-            <p className="text-body mb-2">Location: {Location}</p>
-            <p className="text-body mb-2">JobType: {JobType}</p>
-            <p className="text-body mb-2">Experience: {Experience} years</p>
+            {/* subtle glow effect */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition
+            bg-linear-to-r from-blue-50 via-transparent to-purple-50 pointer-events-none"></div>
 
-            
-            <Link to={`/jobs/${JobId}`} className=" bg-blue-600 inline-flex items-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-                Read more
-                <svg className="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" /></svg>
-            </Link>
+            <div className="relative">
+
+                {/* Title */}
+                <h2 className="text-xl font-semibold text-gray-900 group-hover:text-black">
+                    {Role}
+                </h2>
+
+                {/* Company */}
+                <p className="text-sm text-gray-600 mt-1">
+                    {CompanyName}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+
+                    <span className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+                        📍 {Location}
+                    </span>
+
+                    <span className="text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-600">
+                        {JobType}
+                    </span>
+
+                    <span className="text-xs px-3 py-1 rounded-full bg-green-50 text-green-600">
+                        {Experience} yrs experience
+                    </span>
+
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between mt-6">
+
+                    <span className="text-xs text-gray-400">
+                        Posted recently
+                    </span>
+
+                    <Link
+                        to={`/jobs/${JobId}`}
+                        className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
+                        hover:bg-gray-800 transition flex items-center gap-2"
+                    >
+                        View Job
+                        <span className="group-hover:translate-x-1 transition">→</span>
+                    </Link>
+
+                </div>
+
+            </div>
         </div>
-
-
     )
 }
 

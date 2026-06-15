@@ -35,7 +35,7 @@ function App() {
             <Route path="/jobs/:JobId" element={<JobDetail />} />
             <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
             <Route path="/jobs/applied" element={<AppliedJobs />} />
-            <Route path="/login/recruit" element={<UserLoginCard/>} />
+            <Route path="/login/recruit" element={<UserLoginCard setuser={setuser}/>} />
             <Route path="/registration/createAccount/recruit" element={<SignUpCard />} />
 
 
