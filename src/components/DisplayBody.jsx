@@ -17,7 +17,15 @@ function DisplayBody() {
     const fetchAvailableJobs = async () => {
 
       const params = new URLSearchParams(location.search);
-      const res = await api.getAvailableJobs("?" + params.toString());
+
+      let res;
+
+      if(user.Roles=="Recruiter"){
+        res = await api.getAvailableJobs("?" + params.toString());
+      }
+      else{
+        res=await api.getRecruiterJobs();
+      }
 
       setJobs(res.data.Jobs);
     }

@@ -30,8 +30,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeBody />} />
             <Route path="/registration/createAccount" element={<SignUpCard />} />
-            <Route path="/login" element={<UserLoginCard setuser={setuser} />} />
+            <Route path="/login" element={<UserLoginCard user={user} setuser={setuser} />} />
             <Route path="/jobs" element={<DisplayBody />} />
+            <Route path="/jobs/recruiter" element={<DisplayBody />} />
             <Route path="/jobs/:JobId" element={<JobDetail />} />
             <Route path ="/jobs/:JobId/Application" element={<JobApplication />} />
             <Route path="/jobs/applied" element={<AppliedJobs />} />

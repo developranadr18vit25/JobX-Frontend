@@ -31,6 +31,25 @@ const getAvailableJobs = async (params) => {
     }
 }
 
+const getRecruiterJobs=async ()=>{
+    const token=localStorage.getItem("token");
+
+    try {
+        const res=axios.get("http://127.0.0.1:4000/display/jobs/recruiter" , 
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
+
+        return res;
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 const getDetailOfJob=async(params)=>{
     const token= localStorage.getItem("token");
@@ -136,5 +155,6 @@ export default {
     jobAlreadyApplied,
     displayAppliedJobs,
     logout,
-    getDetailOfJob
+    getDetailOfJob,
+    getRecruiterJobs
 };

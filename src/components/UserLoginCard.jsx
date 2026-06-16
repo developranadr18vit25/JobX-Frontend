@@ -4,7 +4,7 @@ import api from '../api/getData'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UserLoginCard({ setuser }) {
+function UserLoginCard({ user, setuser }) {
 
     const [Username, setUsername] = useState("");
     const [Password, setPassword] = useState("");
@@ -26,6 +26,17 @@ function UserLoginCard({ setuser }) {
 
         console.log(res.data.AccessToken);
         console.log(res.data.user);
+
+    }
+
+    const handleLoginClick = async () => {
+        const loggedInUser = await handleUserLogin()
+
+        if (loggedInUser?.Role === "Recruiter") {
+            navigate("/vamos")
+        } else if (loggedInUser) {
+            navigate("/")
+        }
     }
 
     return (
@@ -33,10 +44,10 @@ function UserLoginCard({ setuser }) {
 
             <div className="relative bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden flex">
 
-         
+
                 <div className="w-[60%] p-10">
 
-        
+
                     <h1 className="text-2xl font-semibold text-gray-900 mb-6">
                         Welcome back 👋
                     </h1>
@@ -79,7 +90,7 @@ function UserLoginCard({ setuser }) {
 
 
                     <div className="mt-8">
-                        <SearchButton content="Login" onClick={handleUserLogin} />
+                        <SearchButton content="Login" onClick={handleLoginClick} />
                     </div>
 
                 </div>
