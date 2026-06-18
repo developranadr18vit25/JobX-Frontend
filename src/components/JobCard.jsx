@@ -1,7 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import api from "../api/getData"
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
+
+    const [Count, setCount] = useState(0);
+    const jobid = JobId;
+
+    // useEffect(() => {
+
+    //     const handleApplicants = async () => {
+    //         const res = await api.getJobApplicants(jobid);
+    //         console.log(res.data);
+
+    //         setCount(res.data.Applicants.length);
+    //     }
+
+    //     handleApplicants();
+
+    // },[jobid]);
+
 
     return (
         <div className="group relative bg-white border border-gray-200 rounded-2xl p-6
@@ -17,6 +37,12 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
                 <h2 className="text-xl font-semibold text-gray-900 group-hover:text-black">
                     {Role}
                 </h2>
+
+                <div className="flex justify-end">
+                    <div className="bg-blue-300 p-2">
+                        {Count} Applicants
+                    </div>
+                </div>
 
                 {/* Company */}
                 <p className="text-sm text-gray-600 mt-1">

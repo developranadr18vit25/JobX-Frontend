@@ -147,6 +147,29 @@ const logout=async ()=>{
     return res;
 }
 
+const getApplicantsCount=async(params)=>{
+    const token=localStorage.getItem("token");
+
+    try {
+        const res=await axios.post(`http://127.0.0.1:4000/apply/job/applicants` ,
+            {
+                jobIDs:params
+
+            },
+            {
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        )
+        
+        return res;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default {
     postRegistrationData,
     loginData,
@@ -156,5 +179,6 @@ export default {
     displayAppliedJobs,
     logout,
     getDetailOfJob,
-    getRecruiterJobs
+    getRecruiterJobs,
+    getApplicantsCount
 };

@@ -20,11 +20,11 @@ function DisplayBody() {
 
       let res;
 
-      if(role=="Applicant" || role==null){
+      if (role == "Applicant" || role == null) {
         res = await api.getAvailableJobs("?" + params.toString());
       }
-      else{
-        res=await api.getRecruiterJobs();
+      else {
+        res = await api.getRecruiterJobs();
       }
 
       setJobs(res.data.Jobs);
@@ -33,6 +33,23 @@ function DisplayBody() {
     fetchAvailableJobs();
 
   }, [location.search])
+
+  useEffect(() => {
+
+    const handleApplicants = async () => {
+      const jobIDs = Jobs.map(job => job.JobId);
+
+      const res = await api.getApplicantsCount(jobIDs);
+      console.log(res.data);
+
+      // setCount(res.data.Applicants.length);
+    }
+
+    handleApplicants();
+
+  }, [Jobs]);
+
+
 
   return (
     <>
@@ -43,24 +60,24 @@ function DisplayBody() {
         {/* Header */}
         <div className="mb-6">
           {
-            role=="Applicant"? <><h1 className="text-2xl font-semibold text-gray-900">
-            Explore Jobs
-          </h1> 
-          <p className="text-sm text-gray-500 mt-1">
-            Find roles matching your skills and experience
-          </p>
-          </>
-          : 
-          <><h1 className="text-2xl font-semibold text-gray-900">
-            Job Listings
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Manage and view all your job postings
-          </p>
-          </>
+            role == "Applicant" ? <><h1 className="text-2xl font-semibold text-gray-900">
+              Explore Jobs
+            </h1>
+              <p className="text-sm text-gray-500 mt-1">
+                Find roles matching your skills and experience
+              </p>
+            </>
+              :
+              <><h1 className="text-2xl font-semibold text-gray-900">
+                Job Listings
+              </h1>
+                <p className="text-sm text-gray-500 mt-1">
+                  Manage and view all your job postings
+                </p>
+              </>
           }
-          
-          
+
+
         </div>
 
         {/* Feed container */}
