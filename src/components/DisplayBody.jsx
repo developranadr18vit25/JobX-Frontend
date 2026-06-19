@@ -7,6 +7,7 @@ import LeftSideBar from './LeftSideBar';
 function DisplayBody() {
 
   const [Jobs, setJobs] = useState([]);
+  const [Count,setCount] = useState([]);
   const user = JSON.parse(localStorage.getItem("user") || "null");
   const role = user?.Role || null;
 
@@ -27,6 +28,8 @@ function DisplayBody() {
         res = await api.getRecruiterJobs();
       }
 
+      console.log(res.data.Jobs)
+
       setJobs(res.data.Jobs);
     }
 
@@ -40,14 +43,20 @@ function DisplayBody() {
       const jobIDs = Jobs.map(job => job.JobId);
 
       const res = await api.getApplicantsCount(jobIDs);
-      console.log(res.data);
+      console.log(res.data.Applicants);
 
-      // setCount(res.data.Applicants.length);
+      setCount(res.data.Applicants);
     }
 
     handleApplicants();
 
   }, [Jobs]);
+
+  const countMap= new Map();
+
+  Count.forEach(item=> {
+    countMap.set(item.JobId,item.Count);
+  });
 
 
 
@@ -91,6 +100,7 @@ function DisplayBody() {
               JobType={job.JobType}
               Experience={job.Experience}
               JobId={job.JobId}
+              ApplicantCount={countMap.get(job.JobId)}
             />
           ))}
         </div>

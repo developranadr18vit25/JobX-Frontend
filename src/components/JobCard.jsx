@@ -4,7 +4,7 @@ import api from "../api/getData"
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
+function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId , ApplicantCount }) {
 
     const [Count, setCount] = useState(0);
     const jobid = JobId;
@@ -40,7 +40,7 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
 
                 <div className="flex justify-end">
                     <div className="bg-blue-300 p-2">
-                        {Count} Applicants
+                        {ApplicantCount} Applicants
                     </div>
                 </div>
 
@@ -73,6 +73,8 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
                         Posted recently
                     </span>
 
+                    {Role=="Applicant"?
+
                     <Link
                         to={`/jobs/${JobId}`}
                         className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
@@ -80,7 +82,18 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId }) {
                     >
                         View Job
                         <span className="group-hover:translate-x-1 transition">→</span>
+                    </Link> :
+
+                    <Link
+                        to={`/jobs/${JobId}`}
+                        className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
+                        hover:bg-gray-800 transition flex items-center gap-2"
+                    >
+                        Manage Job
+                        <span className="group-hover:translate-x-1 transition">→</span>
                     </Link>
+
+                    }
 
                 </div>
 
