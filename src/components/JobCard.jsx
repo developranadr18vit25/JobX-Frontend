@@ -4,7 +4,7 @@ import api from "../api/getData"
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId , ApplicantCount }) {
+function JobCard({ Role, role ,CompanyName, Location, JobType, Experience, JobId, ApplicantCount }) {
 
     const [Count, setCount] = useState(0);
     const jobid = JobId;
@@ -38,11 +38,16 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId , App
                     {Role}
                 </h2>
 
-                <div className="flex justify-end">
-                    <div className="bg-blue-300 p-2">
-                        {ApplicantCount} Applicants
-                    </div>
-                </div>
+                {
+                    role == "Recruiter" &&
+                        <div className="flex justify-end">
+                            <div className="bg-blue-300 p-2">
+                                {ApplicantCount} Applicants
+                            </div>
+                        </div>
+                }
+
+
 
                 {/* Company */}
                 <p className="text-sm text-gray-600 mt-1">
@@ -73,25 +78,25 @@ function JobCard({ Role, CompanyName, Location, JobType, Experience, JobId , App
                         Posted recently
                     </span>
 
-                    {Role=="Applicant"?
+                    {Role == "Applicant" ?
 
-                    <Link
-                        to={`/jobs/${JobId}`}
-                        className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
+                        <Link
+                            to={`/jobs/${JobId}`}
+                            className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
                         hover:bg-gray-800 transition flex items-center gap-2"
-                    >
-                        View Job
-                        <span className="group-hover:translate-x-1 transition">→</span>
-                    </Link> :
+                        >
+                            View Job
+                            <span className="group-hover:translate-x-1 transition">→</span>
+                        </Link> :
 
-                    <Link
-                        to={`/jobs/${JobId}`}
-                        className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
+                        <Link
+                            to={`/jobs/${JobId}/applicantDetails`}
+                            className="px-4 py-2 rounded-xl bg-black text-white text-sm font-medium
                         hover:bg-gray-800 transition flex items-center gap-2"
-                    >
-                        Manage Job
-                        <span className="group-hover:translate-x-1 transition">→</span>
-                    </Link>
+                        >
+                            Manage Job
+                            <span className="group-hover:translate-x-1 transition">→</span>
+                        </Link>
 
                     }
 

@@ -39,6 +39,10 @@ function DisplayBody() {
 
   useEffect(() => {
 
+    if (!Jobs.length) return;
+    if (!user) return;
+    if (role !== "Recruiter") return;
+
     const handleApplicants = async () => {
       const jobIDs = Jobs.map(job => job.JobId);
 
@@ -95,6 +99,7 @@ function DisplayBody() {
             <JobCard
               key={job.JobId}
               Role={job.Title}
+              role={role}
               CompanyName={job.Company}
               Location={job.Location}
               JobType={job.JobType}
