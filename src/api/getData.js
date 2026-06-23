@@ -170,6 +170,25 @@ const getApplicantsCount=async(params)=>{
     }
 }
 
+const getApplicantDetails=async (jobid)=>{
+    const token = localStorage.getItem("token");
+
+    try {
+        const res=await axios.get(`http://127.0.0.1:4000/apply/job/${jobid}/applicants` , 
+            {
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        )
+
+        return res;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default {
     postRegistrationData,
     loginData,
@@ -180,5 +199,6 @@ export default {
     logout,
     getDetailOfJob,
     getRecruiterJobs,
-    getApplicantsCount
+    getApplicantsCount,
+    getApplicantDetails
 };

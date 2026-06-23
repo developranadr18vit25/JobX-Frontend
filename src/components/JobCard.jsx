@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 function JobCard({ Role, role ,CompanyName, Location, JobType, Experience, JobId, ApplicantCount }) {
 
+
     const [Count, setCount] = useState(0);
     const jobid = JobId;
 
@@ -48,7 +49,6 @@ function JobCard({ Role, role ,CompanyName, Location, JobType, Experience, JobId
                 }
 
 
-
                 {/* Company */}
                 <p className="text-sm text-gray-600 mt-1">
                     {CompanyName}
@@ -78,7 +78,7 @@ function JobCard({ Role, role ,CompanyName, Location, JobType, Experience, JobId
                         Posted recently
                     </span>
 
-                    {Role == "Applicant" ?
+                    {(role == "Applicant"  || !role)?
 
                         <Link
                             to={`/jobs/${JobId}`}
