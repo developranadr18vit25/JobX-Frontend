@@ -11,6 +11,7 @@ import JobApplication from './components/JobApplication';
 import AppliedJobs from './components/AppliedJobs';
 import RecruiterLoginCard from './components/RecruiterLoginCard';
 import ApplicantDetailCard from './components/ApplicantDetailCard';
+import JobPosting from './components/JobPosting';
 import { useState } from 'react';
 
 
@@ -40,6 +41,8 @@ function App() {
             <Route path="/login/recruit" element={<UserLoginCard setuser={setuser} />} />
             <Route path="/registration/createAccount/recruit" element={<SignUpCard />} />
             <Route path="/jobs/:JobId/applicantDetails" element={<ApplicantDetailCard />} />
+            <Route path="/jobs/:JobId/applicantDetails" element={<ApplicantDetailCard />} />
+            <Route path="/post" element={<JobPosting />} />
 
           </Routes>
         </Router>
