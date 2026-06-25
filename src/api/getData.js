@@ -189,6 +189,34 @@ const getApplicantDetails=async (jobid)=>{
     }
 }
 
+const postJob=async(Company,Title,Location,Salary,Exp,JobType,Skills,Description)=>{
+    const token=localStorage.getItem("token");
+
+    try {
+        const res=await axios.post("http://127.0.0.1:4000/application/posted" , 
+            {
+                Company:Company,
+                Title:Title,
+                Location:Location,
+                Salary:Salary,
+                Experience:Exp,
+                JobType:JobType,
+                Skills:Skills,
+                Description:Description
+            },
+            {
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        )
+        return res;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default {
     postRegistrationData,
     loginData,
@@ -200,5 +228,6 @@ export default {
     getDetailOfJob,
     getRecruiterJobs,
     getApplicantsCount,
-    getApplicantDetails
+    getApplicantDetails,
+    postJob
 };

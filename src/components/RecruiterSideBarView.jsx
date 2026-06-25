@@ -22,7 +22,7 @@ function RecruiterSideBarView() {
                         Dashboard
                     </Link>
 
-                    <Link to="/jobs" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
+                    <Link to="/jobs/postOpening" className="block px-3 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition">
                         Post a Job
                     </Link>
 
