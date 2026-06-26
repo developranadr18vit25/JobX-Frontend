@@ -28,6 +28,13 @@ function ApplicantDetailCard() {
 
   }, []);
 
+  const changeStatus=async (jobId, userId, status)=>{
+    
+    const res=await api.updateJobStatus(jobId, userId, status);
+
+    console.log(res);
+  }
+
   return (
     <div className="space-y-4">
 
@@ -74,9 +81,13 @@ function ApplicantDetailCard() {
               ` • ${applicant.Qualification?.[0]?.Postgraduation}`}
           </div>
 
-          <div className="mt-4 flex justify-end">
-            <button className="px-4 py-1.5 bg-black text-white text-sm rounded-lg hover:bg-gray-800 transition">
+          <div className="mt-4 flex justify-end gap-2">
+            <button className="px-4 py-1.5 bg-green-700 text-white text-sm rounded-lg hover:bg-gray-800 transition" onClick={()=>changeStatus(JobId,applicant.UserId,"Shortlisted")}>
               Shortlist
+            </button>
+
+            <button className="px-4 py-1.5 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition" onClick={()=>changeStatus(JobId,applicant.UserId,"Rejected")}>
+              Reject
             </button>
           </div>
         </div>
